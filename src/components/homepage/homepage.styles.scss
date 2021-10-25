@@ -1,0 +1,38 @@
+@import '../../variables';
+
+.homepage {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/mind-right-background.svg');
+    background-size: cover;
+
+    .name {
+        color: $color-black;
+        font-size: 10rem;
+        margin: 0 auto;
+        padding-top: 25%;
+        width: fit-content;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 8rem;
+
+        .button {
+            background: none;
+            border: 2px solid white;
+            border-radius: 10rem;
+            box-shadow: 1rem 1rem 1rem rgba($color: black, $alpha: .1);
+            background-color: $color-mint;
+            color: $color-black;
+            font-size: 2.4rem;
+            padding: 1rem 4rem;
+            margin: 0 2rem;
+            
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
