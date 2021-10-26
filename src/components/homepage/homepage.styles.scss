@@ -35,4 +35,49 @@
             }
         }
     }
+
+    .tile {
+        position: absolute;
+        pointer-events: none;
+    
+        &-center {
+            top: 15%;
+            left: 15%;
+            height: 70%;
+            width: 70%;
+            box-shadow: 0rem 0rem 1rem 1rem rgba(black, .2);
+        }
+
+        &-top-left {
+            top: 0;
+            left: 0;
+            height: 50%;
+            width: 15%;
+            box-shadow: -1rem 1rem 1rem rgba(black, .2);
+        }
+                
+        &-top-middle {
+            top: 0;
+            left: 30%;
+            height: 15%;
+            width: 44%;
+            box-shadow: 0rem -2rem 1rem 1rem rgba(black, .2);
+        }
+    
+        &-bottom-left {
+            top: 85%;
+            left: 0;
+            height: 15%;
+            width: 60%;
+            box-shadow: 1rem 1rem 1rem rgba(black, .2);
+        }
+    
+        &-bottom-right {
+            top: 70%;
+            left: 85%;
+            height: 30%;
+            width: 15%;
+            box-shadow: 1rem -1rem 1rem rgba(black, .2);
+        }
+    }
 }

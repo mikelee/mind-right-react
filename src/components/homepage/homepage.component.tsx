@@ -9,6 +9,11 @@ const Homepage: React.FC = () => (
             <button className='button'>Sign Up</button>
             <button className='button'>Sign In</button>
         </div>
+        <div className='tile tile-center'></div>
+        <div className='tile tile-top-left'></div>
+        <div className='tile tile-top-middle'></div>
+        <div className='tile tile-bottom-left'></div>
+        <div className='tile tile-bottom-right'></div>
     </div>
 );
 
