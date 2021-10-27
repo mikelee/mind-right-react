@@ -30,7 +30,11 @@ const Homepage: React.FC = () => {
 
             {
                 loginVisible
-                ? <Login type={loginVisible}/>
+                ? 
+                    <>
+                        <Login type={loginVisible}/>
+                        <div className='overlay'></div>
+                    </>
                 : null
             }
         </div>
