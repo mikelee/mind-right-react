@@ -5,6 +5,7 @@ import { auth } from './firebase';
 import './App.scss';
 
 import Homepage from './components/homepage/homepage.component';
+import UserPage from './components/user-page/user-page.component';
 
 interface User {
   email: string | null,
@@ -33,15 +34,15 @@ function App() {
 		return unsubscribeFromAuth();
 	}, [auth]);
 
-  return (
-  	<div className="App">
-    	{
-			!user
-			? <Homepage />
-			: <p>no user</p>
-      	}
-    </div>
-  );
+	return (
+		<div className="App">
+			{
+				user
+				? <UserPage />
+				: <Homepage />
+			}
+		</div>
+	);
 }
 
 export default App;
