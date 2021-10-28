@@ -5,6 +5,7 @@ import { auth } from './firebase';
 import './App.scss';
 
 import Homepage from './components/homepage/homepage.component';
+import Nav from './components/nav/nav.component';
 import UserPage from './components/user-page/user-page.component';
 
 interface User {
@@ -38,7 +39,11 @@ function App() {
 		<div className="App">
 			{
 				user
-				? <UserPage />
+				?
+					<>
+						<Nav />
+						<UserPage />
+					</>
 				: <Homepage />
 			}
 		</div>
