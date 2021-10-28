@@ -13,10 +13,10 @@ const Login: React.FC<Props> = ({ type }) => {
     const signUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const username = (e.target as HTMLFormElement).username.value;
+        const email = (e.target as HTMLFormElement).email.value;
         const password = (e.target as HTMLFormElement).password.value;
 
-        createUserWithEmailAndPassword(auth, username, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
@@ -31,7 +31,7 @@ const Login: React.FC<Props> = ({ type }) => {
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const email = (e.target as HTMLFormElement).username.value;
+        const email = (e.target as HTMLFormElement).email.value;
         const password = (e.target as HTMLFormElement).password.value;
 
         signInWithEmailAndPassword(auth, email, password)
@@ -55,7 +55,7 @@ const Login: React.FC<Props> = ({ type }) => {
                         <p className='title'>Sign Up</p>
 
                         <form onSubmit={signUp}>
-                            <input name='username' type='text' placeholder='username' required />
+                            <input name='email' type='text' placeholder='email' required />
                             <input name='password' type='password' placeholder='password' required />
                             <button type='submit'>Sign Up</button>
                         </form>
