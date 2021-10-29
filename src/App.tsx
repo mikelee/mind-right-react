@@ -32,8 +32,8 @@ function App() {
 			setUser(currentUser);
 		});
 
-		return unsubscribeFromAuth();
-	}, [auth]);
+		return unsubscribeFromAuth;
+	}, []);
 
 	return (
 		<div className="App">
