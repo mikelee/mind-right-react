@@ -9,8 +9,8 @@ import Nav from './components/nav/nav.component';
 import UserPage from './components/user-page/user-page.component';
 
 interface User {
-  email: string | null,
-  uid: string
+	email: string | null,
+	uid: string
 }
 
 function App() {
