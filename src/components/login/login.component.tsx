@@ -47,12 +47,12 @@ const Login: React.FC<Props> = ({ type }) => {
     }
     
     return (
-        <div className='login'>
+        <div className='login' data-testid='login-component'>
             {
                 type === 'sign-up'
                 ?
                     <>
-                        <p className='title'>Sign Up</p>
+                        <p className='title' data-testid='sign-up-title'>Sign Up</p>
 
                         <form onSubmit={signUp}>
                             <input name='email' type='text' placeholder='email' required />
@@ -62,7 +62,7 @@ const Login: React.FC<Props> = ({ type }) => {
                     </>
                 :
                     <>
-                        <p className='title'>Login</p>
+                        <p className='title' data-testid='sign-in-title'>Login</p>
 
                         <form onSubmit={signIn}>
                             <input name='email' type='text' placeholder='email' required />
