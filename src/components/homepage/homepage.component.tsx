@@ -6,12 +6,12 @@ import Login from '../login/login.component';
 
 const Homepage: React.FC = () => {
 
-    const [loginVisible, setLoginVisible] = useState<string | null>(null);
+    const [loginType, setloginType] = useState<string | null>(null);
 
     const toggleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type = (e.target as HTMLButtonElement).getAttribute('name');
         
-        setLoginVisible(type);
+        setloginType(type);
     }
 
     return (
@@ -19,7 +19,7 @@ const Homepage: React.FC = () => {
             <h1 className='name'>MindRight</h1>
             <div className='buttons'>
                 <button className='button' name='sign-up' onClick={e => toggleLogin(e)}>Sign Up</button>
-                <button className='button' name='login' onClick={e => toggleLogin(e)}>Log In</button>
+                <button className='button' name='sign-in' onClick={e => toggleLogin(e)}>Log In</button>
             </div>
 
             <div className='tile tile-center'></div>
@@ -29,10 +29,10 @@ const Homepage: React.FC = () => {
             <div className='tile tile-bottom-right'></div>
 
             {
-                loginVisible
+                loginType
                 ? 
                     <>
-                        <Login type={loginVisible}/>
+                        <Login type={loginType}/>
                         <div className='overlay'></div>
                     </>
                 : null
