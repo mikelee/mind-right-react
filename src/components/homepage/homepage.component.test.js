@@ -6,7 +6,7 @@ it('should display Login component when login button clicked', () => {
 
     expect(screen.queryByTestId('login-component')).not.toBeInTheDocument();
 
-    const loginButton = screen.getByText('Log In');
+    const loginButton = screen.getByTestId('sign-in-button');
     fireEvent.click(loginButton);
 
     expect(screen.queryByTestId('login-component')).toBeInTheDocument();
@@ -17,7 +17,7 @@ it('should display sign up title and not sign in title', () => {
 
     expect(screen.queryByTestId('sign-up-title')).not.toBeInTheDocument();
 
-    const signUpButton = screen.getByText('Sign Up');
+    const signUpButton = screen.getByTestId('sign-up-button');
     fireEvent.click(signUpButton);
 
     expect(screen.queryByTestId('sign-up-title')).toBeInTheDocument();
@@ -29,7 +29,7 @@ it('should display sign in title and not sign up title', () => {
 
     expect(screen.queryByTestId('sign-in-title')).not.toBeInTheDocument();
 
-    const signInButton = screen.getByText('Log In');
+    const signInButton = screen.getByTestId('sign-in-button');
     fireEvent.click(signInButton);
 
     expect(screen.queryByTestId('sign-in-title')).toBeInTheDocument();
