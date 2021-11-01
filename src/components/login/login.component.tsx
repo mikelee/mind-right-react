@@ -50,27 +50,15 @@ const Login: React.FC<Props> = ({ type }) => {
         <div className='login' data-testid='login-component'>
             {
                 type === 'sign-up'
-                ?
-                    <>
-                        <p className='title' data-testid='sign-up-title'>Sign Up</p>
-
-                        <form onSubmit={signUp}>
-                            <input name='email' type='text' placeholder='email' required />
-                            <input name='password' type='password' placeholder='password' required />
-                            <button type='submit'>Sign Up</button>
-                        </form>
-                    </>
-                :
-                    <>
-                        <p className='title' data-testid='sign-in-title'>Login</p>
-
-                        <form onSubmit={signIn}>
-                            <input name='email' type='text' placeholder='email' required />
-                            <input name='password' type='password' placeholder='password' required />
-                            <button type='submit'>Sign In</button>
-                        </form>
-                    </>
+                ? <p className='title' data-testid='sign-up-title'>Sign Up</p>
+                : <p className='title' data-testid='sign-in-title'>Login</p>
             }
+
+            <form onSubmit={type === 'sign-up' ? signUp : signIn}>
+                <input name='email' type='text' placeholder='email' required />
+                <input name='password' type='password' placeholder='password' required />
+                <button type='submit'>{ type === 'sign-up' ? 'Sign Up' : 'Sign In'}</button>
+            </form>
         </div>
 )};
 
