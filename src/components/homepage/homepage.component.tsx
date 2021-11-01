@@ -19,7 +19,7 @@ const Homepage: React.FC = () => {
             <h1 className='name'>MindRight</h1>
             <div className='buttons'>
                 <button className='button' name='sign-up' onClick={e => toggleLogin(e)}>Sign Up</button>
-                <button className='button' name='sign-in' onClick={e => toggleLogin(e)}>Log In</button>
+                <button className='button' name='sign-in' onClick={e => toggleLogin(e)}>Sign In</button>
             </div>
 
             <div className='tile tile-center'></div>

@@ -51,7 +51,7 @@ const Login: React.FC<Props> = ({ type }) => {
             {
                 type === 'sign-up'
                 ? <p className='title' data-testid='sign-up-title'>Sign Up</p>
-                : <p className='title' data-testid='sign-in-title'>Login</p>
+                : <p className='title' data-testid='sign-in-title'>Sign In</p>
             }
 
             <form onSubmit={type === 'sign-up' ? signUp : signIn}>
