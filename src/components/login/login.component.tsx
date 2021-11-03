@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { addNewUser, auth } from '../../firebase';
 
 import './login.styles.scss';
 
@@ -20,6 +20,19 @@ const Login: React.FC<Props> = ({ type }) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+
+            const userData = {
+                email: user.email,
+                uid: user.uid
+            }
+
+            try {
+                addNewUser(userData);
+
+            } catch (error) {
+                console.log(error)
+            }
+
           })
           .catch((error) => {
             const errorCode = error.code;
