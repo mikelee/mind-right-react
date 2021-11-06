@@ -2,6 +2,8 @@ import React from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
+import './nav.styles.scss';
+
 const Nav = () => {
 
     const logout = () => {
@@ -15,7 +17,7 @@ const Nav = () => {
 
     return (
         <div className='nav'>
-            <button onClick={logout}>Log Out</button>
+            <button className='logout-button' onClick={logout}>Log Out</button>
         </div>
     );
 }
