@@ -42,7 +42,7 @@ function App() {
 				?
 					<>
 						<Nav />
-						<UserPage />
+						<UserPage user={user}/>
 					</>
 				: <Homepage />
 			}
