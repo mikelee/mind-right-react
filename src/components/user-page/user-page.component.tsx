@@ -16,11 +16,18 @@ interface Props {
 const UserPage: React.FC<Props> = ({ user }) => {
 
     const [thoughts, setThoughts] = useState<Thought[] | null>(null);
+    const [text, setText] = useState('');
 
     useEffect(() => {
         const callGetUserData = async () => {
             const data = await getUserData(user.uid);
 		    setThoughts(data);
+
+            const randomThought = getRandomThought(data);
+
+            if (randomThought) {
+                setText(randomThought.text)
+            }
         }
 
         callGetUserData();
@@ -49,14 +56,18 @@ const UserPage: React.FC<Props> = ({ user }) => {
 
             return thoughts;
 	}
+
+    const getRandomThought = (thoughts: Thought[] | null) => {
+        if (thoughts) {
+            const randomIndex = Math.floor((Math.random() * thoughts.length));
+
+            return thoughts[randomIndex];
+        }
+    }
     
     return (
         <div className='user-page'>
-            <p>User Page</p>
-
-            {
-                thoughts?.map((thought: Thought) => <p key={thought.id}>{thought.text}</p>)
-            }
+            <p className='text'>{text}</p>
         </div>
     );
 };
