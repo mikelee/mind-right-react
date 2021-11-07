@@ -23,13 +23,9 @@ const UserPage: React.FC<Props> = ({ user }) => {
     useEffect(() => {
         const callGetUserData = async () => {
             const data = await getUserData(user.uid);
+
 		    setThoughts(data);
-
-            const randomThought = getRandomThought(data);
-
-            if (randomThought) {
-                setText(randomThought.text)
-            }
+            shuffleThought(data);
         }
 
         callGetUserData();
@@ -58,14 +54,6 @@ const UserPage: React.FC<Props> = ({ user }) => {
 
             return thoughts;
 	}
-
-    const getRandomThought = (thoughts: Thought[] | null) => {
-        if (thoughts) {
-            const randomIndex = Math.floor((Math.random() * thoughts.length));
-
-            return thoughts[randomIndex];
-        }
-    }
 
     const shuffleThought = (thoughts: Thought[] | null) => {
         if (thoughts) {
