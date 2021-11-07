@@ -4,11 +4,13 @@ import './button.styles.scss';
 
 interface Props {
     text: string,
-    onClick: () => void
+    onClick: (e?: any) => void,
+    name?: string,
+    dataTestId?: string
 }
 
-const Button: React.FC<Props> = ({ text, onClick }) => (
-    <button className='button' onClick={onClick}>{text}</button>
+const Button: React.FC<Props> = ({ dataTestId, name, onClick, text }) => (
+    <button className='button' onClick={onClick} name={name} data-testid={dataTestId} >{text}</button>
 );
 
 export default Button;
