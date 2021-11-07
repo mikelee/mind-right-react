@@ -1,0 +1,26 @@
+@import '../../variables';
+
+.button {
+    background: none;
+    border: 2px solid white;
+    border-radius: 10rem;
+    box-shadow: 0rem 1rem 1rem rgba($color: black, $alpha: .2);
+    background-color: white;
+    border: 2px solid $color-mint;
+    color: $color-mint;
+    font-size: 2.4rem;
+    padding: 1rem 4rem;
+    margin: 0 2rem;
+    transition: all .3s;
+    
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-1rem);
+        box-shadow: 0rem 2rem 2rem .25rem rgba($color: black, $alpha: .2);
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0rem 1rem 1rem rgba($color: black, $alpha: .2);
+    }
+}
