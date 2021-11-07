@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import './homepage.styles.scss';
 
+import Button from '../button/button.component';
 import Login from '../login/login.component';
 
 const Homepage: React.FC = () => {
@@ -18,8 +19,8 @@ const Homepage: React.FC = () => {
         <div className='homepage'>
             <h1 className='name'>MindRight</h1>
             <div className='buttons'>
-                <button className='button' name='sign-up' onClick={e => toggleLogin(e)} data-testid='sign-up-button'>Sign Up</button>
-                <button className='button' name='sign-in' onClick={e => toggleLogin(e)} data-testid='sign-in-button'>Sign In</button>
+                <Button text='Sign Up' onClick={e => toggleLogin(e)} name='sign-up' dataTestId='sign-up-button' />
+                <Button text='Sign In' onClick={e => toggleLogin(e)} name='sign-in' dataTestId='sign-in-button' />
             </div>
 
             <div className='tile tile-center'></div>
