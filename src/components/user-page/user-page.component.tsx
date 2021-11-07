@@ -68,7 +68,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
     return (
         <div className='user-page'>
             <p className='text'>{text}</p>
-            <Button text='Shuffle' onClick={() => shuffleThought(thoughts)} />
+            <Button className='shuffle-button' text='Shuffle' onClick={() => shuffleThought(thoughts)} />
         </div>
     );
 };
