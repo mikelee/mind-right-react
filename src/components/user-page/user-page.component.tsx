@@ -4,6 +4,8 @@ import { db } from '../../firebase';
 
 import './user-page.styles.scss';
 
+import Button from '../button/button.component';
+
 export interface Thought {
     text: string,
     id: string
@@ -64,10 +66,21 @@ const UserPage: React.FC<Props> = ({ user }) => {
             return thoughts[randomIndex];
         }
     }
+
+    const shuffleThought = (thoughts: Thought[] | null) => {
+        if (thoughts) {
+            const randomIndex = Math.floor((Math.random() * thoughts.length));
+
+            const thought = thoughts[randomIndex];
+
+            setText(thought.text);
+        }
+    }
     
     return (
         <div className='user-page'>
             <p className='text'>{text}</p>
+            <Button text='Shuffle' onClick={() => shuffleThought(thoughts)} />
         </div>
     );
 };
