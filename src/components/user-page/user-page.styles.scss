@@ -9,9 +9,12 @@
 
     .text {
         position: absolute;
-        top: 40%;
+        top: 30%;
+        width: 80%;
         margin: auto;
-        font-size: 2rem;
+        font-size: 4rem;
+        line-height: 1.75;
+        text-align: center;
     }
 
     .shuffle-button {
