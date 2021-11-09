@@ -4,6 +4,8 @@ import { addNewUser, auth } from '../../firebase';
 
 import './login.styles.scss';
 
+import Button from '../button/button.component';
+
 interface Props {
     type: string | null
 }
@@ -70,7 +72,7 @@ const Login: React.FC<Props> = ({ type }) => {
             <form onSubmit={type === 'sign-up' ? signUp : signIn}>
                 <input name='email' type='text' placeholder='email' required />
                 <input name='password' type='password' placeholder='password' required />
-                <button type='submit'>{ type === 'sign-up' ? 'Sign Up' : 'Sign In'}</button>
+                <Button text='Sign In' type='submit' />
             </form>
         </div>
 )};
