@@ -9,10 +9,14 @@ const Homepage: React.FC = () => {
 
     const [loginType, setloginType] = useState<string | null>(null);
 
-    const toggleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const type = (e.target as HTMLButtonElement).getAttribute('name');
+    const toggleLogin = (e: React.MouseEvent<HTMLButtonElement> | null) => {
+        if (e) {
+            const type = (e.target as HTMLButtonElement).getAttribute('name');
+            setloginType(type);
+        } else {
+            setloginType(null)
+        }
         
-        setloginType(type);
     }
 
     return (
@@ -34,7 +38,7 @@ const Homepage: React.FC = () => {
                 ? 
                     <>
                         <Login type={loginType}/>
-                        <div className='overlay'></div>
+                        <div className='overlay' onClick={() => toggleLogin(null)} ></div>
                     </>
                 : null
             }
