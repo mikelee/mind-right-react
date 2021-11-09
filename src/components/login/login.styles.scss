@@ -2,18 +2,49 @@
 
 .login {
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 14%;
+    left: 14%;
     z-index: 10;
-    height: 80vh;
-    width: 80vw;
+    height: 72vh;
+    width: 72vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    border: 2px solid $color-mint;
     border-radius: .5rem;
+    background-image: url('../../assets/mind-right-background.svg');
 
     .title {
         font-size: 3.6rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        align-self: flex-start;
+        width: 50%;
+        margin-top: 9rem;
+        margin-left: 5rem;
+
+        & input {
+            background: white;
+            border-radius: .5rem;
+            border: none;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            width: 100%;
+            font-size: 1.6rem;
+            box-sizing: border-box;
+
+            &:focus {
+               outline: none;
+            }
+        }
+
+        & button {
+            margin-top: 2rem;
+        }
     }
 }
