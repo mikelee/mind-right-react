@@ -70,7 +70,7 @@ const Login: React.FC<Props> = ({ type }) => {
             }
 
             <form onSubmit={type === 'sign-up' ? signUp : signIn}>
-                <input name='email' type='text' placeholder='email' required />
+                <input name='email' type='text' placeholder='email' autoFocus required />
                 <input name='password' type='password' placeholder='password' required />
                 <Button text={type === 'sign-up' ? 'Sign Up' : 'Sign In'} type='submit' />
             </form>
