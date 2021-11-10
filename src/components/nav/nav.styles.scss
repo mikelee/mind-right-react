@@ -3,11 +3,18 @@
     top: 0;
     left: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
     padding: 2rem;
     box-sizing: border-box;
     z-index: 10;
+
+    .menu-button {
+        background-color: blue;
+        height: 5rem;
+        width: 5rem;
+        cursor: pointer;
+    }
 
     .logout-button {
         margin-right: 2rem;
