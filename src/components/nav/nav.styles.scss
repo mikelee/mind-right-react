@@ -10,9 +10,9 @@
     z-index: 10;
 
     .menu-button {
-        background-color: blue;
-        height: 5rem;
-        width: 5rem;
+        height: 3rem;
+        width: fit-content;
+        padding: .5rem;
         cursor: pointer;
     }
 
