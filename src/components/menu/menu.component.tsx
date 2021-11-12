@@ -17,7 +17,7 @@ const Menu = () => {
 
     return (
         <div className='menu'>
-            <button className='logout-button' onClick={logout}>Log Out</button>
+            <div className='menu-item' onClick={logout}>Log Out</div>
         </div>
     )
 };
