@@ -14,15 +14,6 @@ const Nav = () => {
         setMenuVisible(!menuVisible);
     }
 
-    const logout = () => {
-        signOut(auth)
-        .then(() => {
-            console.log('logged out')
-        }).catch((error) => {
-            console.log(error)
-        });
-    }
-
     return (
         <div className='nav'>
             {
@@ -70,7 +61,6 @@ const Nav = () => {
                     </g>
                 </g>
             </svg>
-            <button className='logout-button' onClick={logout}>Log Out</button>
         </div>
     );
 }
