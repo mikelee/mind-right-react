@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -7,8 +7,9 @@ import './user-page.styles.scss';
 import Button from '../button/button.component';
 
 export interface Thought {
+    id: string,
     text: string,
-    id: string
+    image: string
 }
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const UserPage: React.FC<Props> = ({ user }) => {
+
+    const userPageRef = useRef<any>(null);
 
     const [thoughts, setThoughts] = useState<Thought[] | null>(null);
     const [text, setText] = useState('');
@@ -55,18 +58,20 @@ const UserPage: React.FC<Props> = ({ user }) => {
             return thoughts;
 	}
 
-    const shuffleThought = (thoughts: Thought[] | null) => {
+    const shuffleThought = async (thoughts: Thought[] | null) => {
         if (thoughts) {
             const randomIndex = Math.floor((Math.random() * thoughts.length));
 
             const thought = thoughts[randomIndex];
 
             setText(thought.text);
+
+            userPageRef.current.style.backgroundImage = `url(${thought.image})`;
         }
     }
     
     return (
-        <div className='user-page'>
+        <div className='user-page' ref={userPageRef} >
             <p className='text'>{text}</p>
             <Button className='shuffle-button' text='Shuffle' onClick={() => shuffleThought(thoughts)} />
         </div>
