@@ -55,18 +55,18 @@ const Nav = () => {
                         <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
                     </filter>
                 </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="Bottom">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlinkHref="#path-1"></use>
-                        <use fill="#FFFFFF" fill-rule="evenodd" xlinkHref="#path-1"></use>
+                        <use fill="black" fillOpacity="1" filter="url(#filter-2)" xlinkHref="#path-1"></use>
+                        <use fill="#FFFFFF" fillRule="evenodd" xlinkHref="#path-1"></use>
                     </g>
                     <g id="Middle">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlinkHref="#path-3"></use>
-                        <use fill="#FFFFFF" fill-rule="evenodd" xlinkHref="#path-3"></use>
+                        <use fill="black" fillOpacity="1" filter="url(#filter-4)" xlinkHref="#path-3"></use>
+                        <use fill="#FFFFFF" fillRule="evenodd" xlinkHref="#path-3"></use>
                     </g>
                     <g id="Top">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlinkHref="#path-5"></use>
-                        <use fill="#FFFFFF" fill-rule="evenodd" xlinkHref="#path-5"></use>
+                        <use fill="black" fillOpacity="1" filter="url(#filter-6)" xlinkHref="#path-5"></use>
+                        <use fill="#FFFFFF" fillRule="evenodd" xlinkHref="#path-5"></use>
                     </g>
                 </g>
             </svg>
