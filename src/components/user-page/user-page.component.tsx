@@ -6,6 +6,7 @@ import { db } from '../../firebase';
 import './user-page.styles.scss';
 
 import RandomThought from '../random-thought/randomThought.component';
+import ThoughtsList from '../thoughts-list/thoughtsList.component';
 
 export interface Thought {
     id: string,
@@ -59,7 +60,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
         <div className='user-page'>
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={thoughts} user={user} />} />
-                <Route path='/thoughts' element={<div>Thoughts List</div>} />
+                <Route path='/thoughts' element={<ThoughtsList thoughts={thoughts} />} />
             </Routes>
         </div>
     );
