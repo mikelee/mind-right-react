@@ -6,19 +6,4 @@
     height: 100vh;
     width: 100vw;
     position: relative;
-
-    .text {
-        position: absolute;
-        top: 30%;
-        width: 80%;
-        margin: auto;
-        font-size: 4rem;
-        line-height: 1.75;
-        text-align: center;
-        text-shadow: 0 0 .5rem white;
-    }
-
-    .shuffle-button {
-        margin-bottom: 3%;
-    }
 }
