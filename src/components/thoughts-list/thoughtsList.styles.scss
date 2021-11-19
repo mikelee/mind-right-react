@@ -1,0 +1,10 @@
+@import '../../variables';
+
+.thoughts-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+}
