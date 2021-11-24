@@ -60,7 +60,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
         <div className='user-page'>
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={thoughts} user={user} />} />
-                <Route path='/thoughts' element={<ThoughtsList thoughts={thoughts} />} />
+                <Route path='/thoughts' element={<ThoughtsList thoughts={thoughts} user={user} />} />
             </Routes>
         </div>
     );
