@@ -1,11 +1,13 @@
 import React from 'react';
 
 import './thought-item.styles.scss';
+import { User } from '../../App';
 
 interface Props {
     text: string,
     image: string,
-    id: string
+    id: string,
+    user: User
 }
 
 const ThoughtItem: React.FC<Props> = ({ text, image, id }) => {
