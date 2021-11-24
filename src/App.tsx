@@ -8,7 +8,7 @@ import Homepage from './components/homepage/homepage.component';
 import Nav from './components/nav/nav.component';
 import UserPage from './components/user-page/user-page.component';
 
-interface User {
+export interface User {
 	email: string | null,
 	uid: string
 }
