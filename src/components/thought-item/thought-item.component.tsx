@@ -14,11 +14,11 @@ const ThoughtItem: React.FC<Props> = ({ text, image, id }) => {
     <form style={{backgroundImage: `url(${image})`}} className='thought-item'>
         <div className='label text'>
             <p>Text</p>
-            <input value={text} className='thought-item-input' />
+            <input name='text' defaultValue={text} className='thought-item-input' />
         </div>
         <div className='label image'>
             <p>Image</p>
-            <input value={image} className='thought-item-input' />
+            <input name='image' defaultValue={image} className='thought-item-input' />
         </div>
     </form>
 )};
