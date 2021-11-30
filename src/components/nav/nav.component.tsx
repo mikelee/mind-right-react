@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase';
 
 import './nav.styles.scss';
 
