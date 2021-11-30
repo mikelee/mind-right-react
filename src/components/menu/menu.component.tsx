@@ -5,7 +5,11 @@ import { auth } from '../../firebase';
 
 import './menu.styles.scss';
 
-const Menu = () => {
+interface Props {
+    toggleMenu: () => void
+}
+
+const Menu: React.FC<Props> = ({ toggleMenu }) => {
     
     const logout = () => {
         signOut(auth)
@@ -18,10 +22,10 @@ const Menu = () => {
 
     return (
         <div className='menu'>
-            <Link to='/thoughts' className='menu-item'>Thoughts</Link>
+            <Link to='/thoughts' className='menu-item' onClick={toggleMenu}>Thoughts</Link>
             <div className='menu-item' onClick={logout}>Log Out</div>
         </div>
-    )
+    );
 };
 
 export default Menu;
