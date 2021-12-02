@@ -24,9 +24,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
 
     useEffect(() => {
         const callGetUserData = async () => {
-            const data = await getUserData(user.uid);
-
-		    setThoughts(data);
+            await getUserData(user.uid);
         }
 
         callGetUserData();
@@ -53,7 +51,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
 				thoughts.push(thought);
 			});
 
-            return thoughts;
+            setThoughts(thoughts);
 	}
     
     return (
