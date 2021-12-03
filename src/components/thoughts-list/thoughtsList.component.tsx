@@ -9,14 +9,15 @@ import ThoughtItem from '../thought-item/thought-item.component';
 
 interface Props {
     thoughts: Thought[] | null,
-    user: User
+    user: User,
+    getUserData: (uid: string) => Promise<any>
 }
 
-const ThoughtsList: React.FC<Props> = ({ thoughts, user }) => (
+const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => (
     <div className='thoughts-list'>
         <Link to='/'>Back</Link>
         {
-            thoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} user={user} />)
+            thoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} user={user} getUserData={getUserData} />)
         }
     </div>
 );

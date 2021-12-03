@@ -9,7 +9,8 @@ interface Props {
     text: string,
     image: string,
     id: string,
-    user: User
+    user: User,
+    getUserData: (uid: string) => Promise<any>
 }
 
 const ThoughtItem: React.FC<Props> = (props) => {
