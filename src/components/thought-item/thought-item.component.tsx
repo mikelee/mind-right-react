@@ -14,7 +14,7 @@ interface Props {
 }
 
 const ThoughtItem: React.FC<Props> = (props) => {
-    const { text, image, id, user } = props;
+    const { text, image, id, user, getUserData } = props;
 
     const editThought = async (e: React.FocusEvent<HTMLFormElement, Element>) => {
         const { name, value } = e.target;
@@ -29,6 +29,8 @@ const ThoughtItem: React.FC<Props> = (props) => {
         await updateDoc(thoughtRef, {
             [name]: value
           });
+
+        getUserData(user.uid);
     }
 
     return (
