@@ -5,8 +5,8 @@ import { db } from '../../firebase';
 
 import './user-page.styles.scss';
 
-import RandomThought from '../random-thought/randomThought.component';
-import ThoughtsList from '../thoughts-list/thoughtsList.component';
+import RandomThought from '../random-thought/random-thought.component';
+import ThoughtsList from '../thoughts-list/thoughts-list.component';
 
 export interface Thought {
     id: string,

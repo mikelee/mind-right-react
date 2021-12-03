@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './thoughtsList.styles.scss';
+import './thoughts-list.styles.scss';
 import { Thought } from '../user-page/user-page.component';
 import { User } from '../../App';
 

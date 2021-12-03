@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Thought } from '../user-page/user-page.component';
 
-import './randomThought.styles.scss';
+import './random-thought.styles.scss';
 
 import Button from '../button/button.component';
 
