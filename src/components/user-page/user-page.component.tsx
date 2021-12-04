@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './user-page.styles.scss';
@@ -34,7 +34,7 @@ const UserPage: React.FC<Props> = ({ user }) => {
 		const thoughts: any = [];
 
         const thoughtsRef = collection(db, 'thoughts');
-        const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid));
+        const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid), orderBy('timestamp', 'desc'));
         const usersThoughts = await getDocs(thoughtsQuery);
 
         usersThoughts.docs.forEach(el => {
