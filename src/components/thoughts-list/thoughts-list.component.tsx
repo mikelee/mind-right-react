@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './thoughts-list.styles.scss';
@@ -23,7 +23,8 @@ const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => {
         addDoc(thoughtsRef, {
             text: '',
             image: '',
-            userId: user.uid
+            userId: user.uid,
+            timestamp: Timestamp.fromMillis(Date.now())
         });
 
         getUserData(user.uid);
