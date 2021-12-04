@@ -1,5 +1,5 @@
 import React from 'react';
-import { collection, doc, getDocs, updateDoc, query, where } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './thought-item.styles.scss';
@@ -19,12 +19,7 @@ const ThoughtItem: React.FC<Props> = (props) => {
     const editThought = async (e: React.FocusEvent<HTMLFormElement, Element>) => {
         const { name, value } = e.target;
 
-        const usersRef = collection(db, 'users');
-		const userQuery = query(usersRef, where('uid', '==', user.uid));
-		const querySnapshot = await getDocs(userQuery);
-        const foundUser = querySnapshot.docs[0];
-
-        const thoughtRef = doc(db, `users/${foundUser.id}/thoughts`, id);
+        const thoughtRef = doc(db, 'thoughts', id);
 
         await updateDoc(thoughtRef, {
             [name]: value

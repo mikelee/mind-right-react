@@ -33,14 +33,11 @@ const UserPage: React.FC<Props> = ({ user }) => {
     const getUserData = async (uid: string) => {
 		const thoughts: any = [];
 
-		const usersRef = collection(db, 'users');
-		const userQuery = query(usersRef, where('uid', '==', uid));
-		const querySnapshot = await getDocs(userQuery);
+        const thoughtsRef = collection(db, 'thoughts');
+        const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid));
+        const usersThoughts = await getDocs(thoughtsQuery);
 
-        const foundUser = querySnapshot.docs[0];
-        const thoughtsSnap = await getDocs(collection(db, `users/${foundUser.id}/thoughts`))
-
-        thoughtsSnap.forEach(el => {
+        usersThoughts.docs.forEach(el => {
 				const data = el.data();
 
 				const thought = {
