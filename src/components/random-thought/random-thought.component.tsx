@@ -22,7 +22,7 @@ const RandomThought: React.FC<Props> = ({ thoughts, user }) => {
     }, [thoughts]);
 
     const shuffleThought = async (thoughts: Thought[] | null) => {
-        if (thoughts) {
+        if (thoughts && thoughts.length > 0) {
             const randomIndex = Math.floor((Math.random() * thoughts.length));
 
             const thought = thoughts[randomIndex];
@@ -30,6 +30,8 @@ const RandomThought: React.FC<Props> = ({ thoughts, user }) => {
             setText(thought.text);
 
             randomThoughtRef.current.style.backgroundImage = `url(${thought.image})`;
+        } else {
+            setText('Add some thoughts and get started!');
         }
     }
     
