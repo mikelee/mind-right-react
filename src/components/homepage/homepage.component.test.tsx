@@ -6,8 +6,8 @@ it('should display Login component when login button clicked', () => {
 
     expect(screen.queryByTestId('login-component')).not.toBeInTheDocument();
 
-    const loginButton = screen.getByTestId('sign-in-button');
-    fireEvent.click(loginButton);
+    const signInButton = screen.getByTestId('sign-in-button');
+    fireEvent.click(signInButton);
 
     expect(screen.queryByTestId('login-component')).toBeInTheDocument();
 });
