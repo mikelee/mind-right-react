@@ -1,5 +1,5 @@
 import React from 'react';
-import { doc, updateDoc } from 'firebase/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './thought-item.styles.scss';
@@ -14,6 +14,16 @@ interface Props {
 }
 
 const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) => {
+
+    const deleteThought = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, thoughtId: string) => {
+        e.preventDefault();
+
+        const thoughtRef = doc(db, 'thoughts', thoughtId);
+        await deleteDoc(thoughtRef);
+
+        getUserData(user.uid);
+    }
+
     const editThought = async (e: React.FocusEvent<HTMLFormElement, Element>) => {
         const { name, value } = e.target;
 
@@ -36,6 +46,7 @@ const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) =>
             <p>Image</p>
             <input name='image' defaultValue={image} className='thought-item-input' />
         </div>
+        <button onClick={(e) => deleteThought(e, id)}>Delete</button>
     </form>
 )};
 
