@@ -13,9 +13,7 @@ interface Props {
     getUserData: (uid: string) => Promise<any>
 }
 
-const ThoughtItem: React.FC<Props> = (props) => {
-    const { text, image, id, user, getUserData } = props;
-
+const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) => {
     const editThought = async (e: React.FocusEvent<HTMLFormElement, Element>) => {
         const { name, value } = e.target;
 
