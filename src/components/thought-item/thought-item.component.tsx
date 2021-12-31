@@ -5,6 +5,8 @@ import { db } from '../../firebase';
 import './thought-item.styles.scss';
 import { User } from '../../App';
 
+import {ReactComponent as DeleteIcon} from '../../assets/delete.svg';
+
 interface Props {
     text: string,
     image: string,
@@ -48,7 +50,9 @@ const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) =>
                     <input name='image' defaultValue={image} className='thought-item-input' />
                 </div>
             </form>
-            <button className='delete-button' onClick={(e) => deleteThought(e, id)}>Delete</button>
+            <button className='delete-button' onClick={(e) => deleteThought(e, id)}>
+                <DeleteIcon className='delete-icon' />
+            </button>
         </div>
 )};
 

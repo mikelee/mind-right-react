@@ -36,5 +36,20 @@
         position: absolute;
         top: 2rem;
         right: 2rem;
+        background: none;
+        border: none;
+        padding: 0;
+        visibility: hidden;
+        cursor: pointer;
+
+        .delete-icon {
+            width: 2rem;
+            height: 2rem;
+            padding: .5rem;
+        }
+    }
+
+    &:hover .delete-button {
+        visibility: visible;
     }
 }
