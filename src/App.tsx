@@ -4,9 +4,8 @@ import { auth } from './firebase';
 
 import './App.scss';
 
+import DataLoader from './components/data-loader/data-loader.component';
 import Homepage from './components/homepage/homepage.component';
-import Nav from './components/nav/nav.component';
-import UserPage from './components/user-page/user-page.component';
 
 export interface User {
 	email: string | null,
@@ -36,14 +35,10 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
+		<div className='App'>
 			{
 				user
-				?
-					<>
-						<Nav />
-						<UserPage user={user}/>
-					</>
+				? <DataLoader user={user} />
 				: <Homepage />
 			}
 		</div>
