@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { addNewUser, auth } from '../../firebase';
 
@@ -12,6 +13,8 @@ interface Props {
 
 const Login: React.FC<Props> = ({ type }) => {
 
+    let navigate = useNavigate();
+
     const signUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -19,7 +22,7 @@ const Login: React.FC<Props> = ({ type }) => {
         const password = (e.target as HTMLFormElement).password.value;
 
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
             // Signed in 
             const user = userCredential.user;
 
@@ -29,8 +32,8 @@ const Login: React.FC<Props> = ({ type }) => {
             }
 
             try {
-                addNewUser(userData);
-
+                await addNewUser(userData);
+                navigate('/home');
             } catch (error) {
                 console.log(error)
             }
@@ -53,6 +56,7 @@ const Login: React.FC<Props> = ({ type }) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            navigate('/home');
         })
         .catch((error) => {
             const errorCode = error.code;
