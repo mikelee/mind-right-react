@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
@@ -11,10 +11,13 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ toggleMenu }) => {
     
+    let navigate = useNavigate();
+    
     const logout = () => {
         signOut(auth)
         .then(() => {
             console.log('logged out')
+            navigate('/');
         }).catch((error) => {
             console.log(error)
         });
