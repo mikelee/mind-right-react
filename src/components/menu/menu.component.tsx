@@ -25,6 +25,7 @@ const Menu: React.FC<Props> = ({ toggleMenu }) => {
 
     return (
         <div className='menu'>
+            <Link to='/home' className='menu-item' onClick={toggleMenu}>Home</Link>
             <Link to='/home/thoughts' className='menu-item' onClick={toggleMenu}>Thoughts</Link>
             <div className='menu-item' onClick={logout}>Log Out</div>
         </div>
