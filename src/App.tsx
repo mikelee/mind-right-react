@@ -39,7 +39,7 @@ function App() {
 		<div className='App'>
 			<Routes>
 				<Route path='/' element={<Homepage />} />
-				<Route path='/home' element={<DataLoader user={user} />} />
+				<Route path='/home/*' element={<DataLoader user={user} />} />
 			</Routes>
 		</div>
 	);
