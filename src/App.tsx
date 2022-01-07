@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -36,11 +37,10 @@ function App() {
 
 	return (
 		<div className='App'>
-			{
-				user
-				? <DataLoader user={user} />
-				: <Homepage />
-			}
+			<Routes>
+				<Route path='/' element={<Homepage />} />
+				<Route path='/home' element={<DataLoader user={user} />} />
+			</Routes>
 		</div>
 	);
 }
