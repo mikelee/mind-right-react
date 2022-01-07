@@ -3,6 +3,7 @@ import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import UserPage from '../user-page/user-page.component';
+import { User } from '../../App'; 
 
 export interface Thought {
     id: string,
@@ -11,7 +12,7 @@ export interface Thought {
 }
 
 interface Props {
-    user: any
+    user: User | null
 }
 
 const DataLoader: React.FC<Props> = ({ user }) => {
@@ -20,13 +21,15 @@ const DataLoader: React.FC<Props> = ({ user }) => {
     const [dataLoaded, setDataLoaded] = useState(false);
 
     useEffect(() => {
-        const callGetUserData = async () => {
-            await getUserData(user.uid);
-            setDataLoaded(true);
-        }
+        if (user) {
+            const callGetUserData = async () => {
+                await getUserData(user.uid);
+                setDataLoaded(true);
+            }
 
-        callGetUserData();
-    }, [user.uid]);
+            callGetUserData();
+        }
+    }, [user]);
 
     const getUserData = async (uid: string) => {
         const thoughts: any = [];
