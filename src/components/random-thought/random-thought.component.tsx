@@ -33,7 +33,11 @@ const RandomThought: React.FC<Props> = ({ thoughts }) => {
             setText(thought.text);
             setThoughtId(thought.id);
 
-            randomThoughtRef.current.style.backgroundImage = `url(${thought.image})`;
+            if (thought.image !== '') {
+                randomThoughtRef.current.style.backgroundImage = `url(${thought.image})`;
+            } else {
+                randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
+            }
         } else {
             setText('Add some thoughts and get started!');
             randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
