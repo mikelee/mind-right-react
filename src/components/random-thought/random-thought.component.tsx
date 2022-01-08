@@ -4,6 +4,7 @@ import { Thought } from '../user-page/user-page.component';
 import './random-thought.styles.scss';
 
 import Button from '../button/button.component';
+import beachImage from '../../assets/beach-image.jpeg';
 
 interface Props {
     thoughts: Thought[] | null
@@ -35,6 +36,7 @@ const RandomThought: React.FC<Props> = ({ thoughts }) => {
             randomThoughtRef.current.style.backgroundImage = `url(${thought.image})`;
         } else {
             setText('Add some thoughts and get started!');
+            randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
         }
     }
     
