@@ -6,11 +6,10 @@ import './random-thought.styles.scss';
 import Button from '../button/button.component';
 
 interface Props {
-    thoughts: Thought[] | null,
-    user: any
+    thoughts: Thought[] | null
 }
 
-const RandomThought: React.FC<Props> = ({ thoughts, user }) => {
+const RandomThought: React.FC<Props> = ({ thoughts }) => {
 
     const randomThoughtRef = useRef<any>(null);
 

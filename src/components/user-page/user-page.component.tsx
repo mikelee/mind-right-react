@@ -25,7 +25,7 @@ const UserPage: React.FC<Props> = ({ thoughts, user, getUserData }) => {
         <div className='user-page'>
             <Nav />
             <Routes>
-                <Route path='/' element={<RandomThought thoughts={thoughts} user={user} />} />
+                <Route path='/' element={<RandomThought thoughts={thoughts} />} />
                 <Route path='/thoughts' element={<ThoughtsList thoughts={thoughts} user={user} getUserData={getUserData} />} />
             </Routes>
         </div>
