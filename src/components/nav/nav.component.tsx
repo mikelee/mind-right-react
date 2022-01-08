@@ -4,7 +4,7 @@ import './nav.styles.scss';
 
 import Menu from '../menu/menu.component';
 
-const Nav = () => {
+const Nav: React.FC = () => {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
