@@ -21,6 +21,12 @@
         font-size: 1.8rem;
         cursor: pointer;
         text-decoration: none;
+        transition: all .2s;
+
+        &:hover {
+            background-color: $color-mint-dark;
+            color: white !important;
+        }
 
         &:visited {
             color: black;
