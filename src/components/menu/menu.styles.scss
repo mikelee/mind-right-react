@@ -5,7 +5,7 @@
     top: calc(100%);
     left: 2rem;
     width: 30rem;
-    border: 2px solid $color-mint;
+    border: 2px solid $color-mint-dark;
     border-radius: .5rem;
 
     .menu-item {
@@ -16,7 +16,7 @@
         max-width: 100%;
         padding: 1.5rem;
         background-color: white;
-        border-bottom: 1px solid $color-mint;
+        border-bottom: 1px solid $color-mint-dark;
         border-radius: 0;
         font-size: 1.8rem;
         cursor: pointer;
