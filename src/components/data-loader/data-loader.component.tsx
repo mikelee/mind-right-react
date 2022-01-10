@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 
+import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
 import UserPage from '../user-page/user-page.component';
 import { User } from '../../App'; 
 
@@ -58,7 +59,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
                 dataLoaded ?
                     <UserPage thoughts={thoughts} user={user} getUserData={getUserData} />
                 :
-                    <p>Loading</p>
+                    <SkeletonScreen />
             }
         </div>
     );
