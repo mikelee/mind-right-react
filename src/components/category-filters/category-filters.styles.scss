@@ -1,0 +1,19 @@
+@import '../../variables';
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+
+    .category {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        margin: 0rem 2rem;
+
+        input[type=checkbox]{
+            margin-right: 1rem;
+        }
+    }
+}
