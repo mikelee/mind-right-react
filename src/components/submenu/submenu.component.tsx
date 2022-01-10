@@ -2,9 +2,15 @@ import React from 'react';
 
 import './submenu.styles.scss';
 
-const Submenu: React.FC = () => {
+interface Props {
+    childComponent: React.ReactElement
+}
+
+const Submenu: React.FC<Props> = ({ childComponent }) => {
     return (
-        <div className='submenu'></div>
+        <div className='submenu'>
+            {childComponent}
+        </div>
     );
 }
 
