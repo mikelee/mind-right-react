@@ -19,6 +19,7 @@ interface Props {
 const DataLoader: React.FC<Props> = ({ user }) => {
 
     const [thoughts, setThoughts] = useState<Thought[] | null>(null);
+    const [categories, setCategories] = useState<string[] | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
 
     useEffect(() => {
@@ -51,13 +52,23 @@ const DataLoader: React.FC<Props> = ({ user }) => {
             });
 
             setThoughts(thoughts);
+
+        const categoriesRef = collection(db, 'categories');
+        const categoriesQuery = query(categoriesRef, where('userId', '==', uid));
+        const usersCategories = await getDocs(categoriesQuery);
+
+        usersCategories.forEach((el) => {
+            const data = el.data();
+
+            setCategories(data.categoryList);
+        });
     }
 
     return (
         <div className='data-loader'>
             {
                 dataLoaded ?
-                    <UserPage thoughts={thoughts} user={user} getUserData={getUserData} />
+                    <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />
                 :
                     <SkeletonScreen />
             }
