@@ -3,15 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 
 import './user-page.styles.scss';
 
+import { Thought } from '../data-loader/data-loader.component';
+
 import RandomThought from '../random-thought/random-thought.component';
 import ThoughtsList from '../thoughts-list/thoughts-list.component';
 import Nav from '../nav/nav.component';
-
-export interface Thought {
-    id: string,
-    text: string,
-    image: string
-}
 
 interface Props {
     categories: string[] | null, 

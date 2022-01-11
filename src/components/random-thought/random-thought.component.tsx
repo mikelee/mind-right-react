@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Thought } from '../user-page/user-page.component';
+import { Thought } from '../data-loader/data-loader.component';
 
 import './random-thought.styles.scss';
 

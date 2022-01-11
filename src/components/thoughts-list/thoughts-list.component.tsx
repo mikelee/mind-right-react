@@ -3,7 +3,7 @@ import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './thoughts-list.styles.scss';
-import { Thought } from '../user-page/user-page.component';
+import { Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
 
 import Button from '../button/button.component';

@@ -8,6 +8,7 @@ import { User } from '../../App';
 
 export interface Thought {
     id: string,
+    categories: string[],
     text: string,
     image: string
 }
