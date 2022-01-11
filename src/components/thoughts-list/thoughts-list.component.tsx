@@ -11,12 +11,13 @@ import CategoryFilters from '../category-filters/category-filters.component';
 import ThoughtItem from '../thought-item/thought-item.component';
 
 interface Props {
+    categories: string[] | null,
     thoughts: Thought[] | null,
     user: User,
     getUserData: (uid: string) => Promise<any>
 }
 
-const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => {
+const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData }) => {
 
     const [categoryFiltersVisible, setCategoryFiltersVisible] = useState(false);
 
@@ -41,7 +42,7 @@ const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => {
             </div>
             {
                 categoryFiltersVisible
-                ? <CategoryFilters />
+                ? <CategoryFilters categories={categories} />
                 : null
             }
             {

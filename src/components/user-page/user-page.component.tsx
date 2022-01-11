@@ -14,19 +14,20 @@ export interface Thought {
 }
 
 interface Props {
+    categories: string[] | null, 
     thoughts: Thought[] | null
     user: any,
     getUserData: (uid: string) => Promise<any>
 }
 
-const UserPage: React.FC<Props> = ({ thoughts, user, getUserData }) => {
+const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData }) => {
     
     return (
         <div className='user-page'>
             <Nav />
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={thoughts} />} />
-                <Route path='/thoughts' element={<ThoughtsList thoughts={thoughts} user={user} getUserData={getUserData} />} />
+                <Route path='/thoughts' element={<ThoughtsList categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />} />
             </Routes>
         </div>
     );
