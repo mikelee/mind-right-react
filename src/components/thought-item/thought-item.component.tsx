@@ -3,6 +3,7 @@ import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import './thought-item.styles.scss';
+
 import { User } from '../../App';
 
 import beachImage from '../../assets/beach-image.jpeg';

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 
+import { User } from '../../App'; 
+
 import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
 import UserPage from '../user-page/user-page.component';
-import { User } from '../../App'; 
 
 export interface Thought {
     id: string,
