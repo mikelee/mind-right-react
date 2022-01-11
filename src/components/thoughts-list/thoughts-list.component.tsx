@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -7,6 +7,7 @@ import { Thought } from '../user-page/user-page.component';
 import { User } from '../../App';
 
 import Button from '../button/button.component';
+import CategoryFilters from '../category-filters/category-filters.component';
 import ThoughtItem from '../thought-item/thought-item.component';
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => {
+
+    const [categoryFiltersVisible, setCategoryFiltersVisible] = useState(false);
 
     const addThought = async () => {
         const thoughtsRef = collection(db, 'thoughts');
@@ -32,7 +35,15 @@ const ThoughtsList: React.FC<Props> = ({ thoughts, user, getUserData }) => {
 
     return (
         <div className='thoughts-list'>
-            <Button className='add-button' text={'Add'} onClick={addThought} />
+            <div className='buttons'>
+                <Button className='add-button' text={'Add'} onClick={addThought} />
+                <Button className='categories-button' text={'Categories'} onClick={() => setCategoryFiltersVisible(!categoryFiltersVisible)} />
+            </div>
+            {
+                categoryFiltersVisible
+                ? <CategoryFilters />
+                : null
+            }
             {
                 thoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} user={user} getUserData={getUserData} />)
             }
