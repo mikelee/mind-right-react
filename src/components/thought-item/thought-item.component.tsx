@@ -10,6 +10,7 @@ import beachImage from '../../assets/beach-image.jpeg';
 import {ReactComponent as DeleteIcon} from '../../assets/delete.svg';
 
 interface Props {
+    categories: string[],
     text: string,
     image: string,
     id: string,
@@ -17,7 +18,7 @@ interface Props {
     getUserData: (uid: string) => Promise<any>
 }
 
-const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) => {
+const ThoughtItem: React.FC<Props> = ({ categories, text, image, id, user, getUserData }) => {
 
     const deleteThought = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, thoughtId: string) => {
         e.preventDefault();
@@ -55,6 +56,9 @@ const ThoughtItem: React.FC<Props> = ({ text, image, id, user, getUserData }) =>
             <button className='delete-button' onClick={(e) => deleteThought(e, id)}>
                 <DeleteIcon className='delete-icon' />
             </button>
+            <div className='thought-categories'>
+                {categories.join(', ')}
+            </div>
         </div>
 )};
 

@@ -55,4 +55,11 @@
     &:hover .delete-button {
         visibility: visible;
     }
+
+    .thought-categories {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        background-color: white;
+    }
 }
