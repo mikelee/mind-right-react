@@ -7,6 +7,11 @@ import { User } from '../../App';
 import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
 import UserPage from '../user-page/user-page.component';
 
+export interface Category {
+    name: string,
+    selected: boolean
+}
+
 export interface Thought {
     id: string,
     categories: string[],
