@@ -63,7 +63,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
             setThoughts(thoughts);
 
         const categoriesRef = collection(db, 'categories');
-        const categoriesQuery = query(categoriesRef, where('userId', '==', uid));
+        const categoriesQuery = query(categoriesRef, where('userId', '==', uid), orderBy('name', 'asc'));
         const usersCategories = await getDocs(categoriesQuery);
 
         usersCategories.forEach((el) => {
