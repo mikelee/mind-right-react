@@ -42,6 +42,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
 
     const getUserData = async (uid: string) => {
         const thoughts: any = [];
+        const categories: Category[] = [];
 
         const thoughtsRef = collection(db, 'thoughts');
         const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid), orderBy('timestamp', 'desc'));
@@ -67,8 +68,16 @@ const DataLoader: React.FC<Props> = ({ user }) => {
         usersCategories.forEach((el) => {
             const data = el.data();
 
-            setCategories(data.categoryList);
+            const category = {
+                name: data.name,
+                selected: data.selected
+            }
+
+            categories.push(category);
+
         });
+
+        setCategories(categories);
     }
 
     return (
