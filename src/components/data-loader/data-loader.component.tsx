@@ -26,7 +26,7 @@ interface Props {
 const DataLoader: React.FC<Props> = ({ user }) => {
 
     const [thoughts, setThoughts] = useState<Thought[] | null>(null);
-    const [categories, setCategories] = useState<string[] | null>(null);
+    const [categories, setCategories] = useState<Category[] | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
 
     useEffect(() => {
