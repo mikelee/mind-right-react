@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import './user-page.styles.scss';
 
+import { Category } from '../data-loader/data-loader.component';
 import { Thought } from '../data-loader/data-loader.component';
 
 import RandomThought from '../random-thought/random-thought.component';
@@ -10,7 +11,7 @@ import ThoughtsList from '../thoughts-list/thoughts-list.component';
 import Nav from '../nav/nav.component';
 
 interface Props {
-    categories: string[] | null, 
+    categories: Category[] | null, 
     thoughts: Thought[] | null
     user: any,
     getUserData: (uid: string) => Promise<any>
