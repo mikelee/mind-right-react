@@ -8,6 +8,7 @@ import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
 import UserPage from '../user-page/user-page.component';
 
 export interface Category {
+    id: string,
     name: string,
     selected: boolean
 }
@@ -69,14 +70,16 @@ const DataLoader: React.FC<Props> = ({ user }) => {
             const data = el.data();
 
             const category = {
+                id: el.id,
                 name: data.name,
                 selected: data.selected
             }
 
             categories.push(category);
 
+            
         });
-
+        
         setCategories(categories);
     }
 
