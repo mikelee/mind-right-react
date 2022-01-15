@@ -42,8 +42,12 @@ const DataLoader: React.FC<Props> = ({ user }) => {
     }, [user]);
 
     const getUserData = async (uid: string) => {
+        await getThoughts(uid);
+        await getCategories(uid);
+    }
+
+    const getThoughts = async (uid: string) => {
         const thoughts: any = [];
-        const categories: Category[] = [];
 
         const thoughtsRef = collection(db, 'thoughts');
         const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid), orderBy('timestamp', 'desc'));
@@ -61,12 +65,16 @@ const DataLoader: React.FC<Props> = ({ user }) => {
             });
 
             setThoughts(thoughts);
+    }
+
+    const getCategories = async (uid: string) => {
+        const categories: Category[] = [];
 
         const categoriesRef = collection(db, 'categories');
         const categoriesQuery = query(categoriesRef, where('userId', '==', uid), orderBy('name', 'asc'));
         const usersCategories = await getDocs(categoriesQuery);
 
-        usersCategories.forEach((el) => {
+        usersCategories.forEach(el => {
             const data = el.data();
 
             const category = {
@@ -76,8 +84,6 @@ const DataLoader: React.FC<Props> = ({ user }) => {
             }
 
             categories.push(category);
-
-            
         });
         
         setCategories(categories);
