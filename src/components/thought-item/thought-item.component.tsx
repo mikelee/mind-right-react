@@ -57,7 +57,7 @@ const ThoughtItem: React.FC<Props> = ({ categories, text, image, id, user, getUs
                 <DeleteIcon className='delete-icon' />
             </button>
             <div className='thought-categories'>
-                {categories.join(', ')}
+                {categories?.join(', ')}
             </div>
         </div>
 )};
