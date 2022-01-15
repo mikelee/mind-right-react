@@ -14,10 +14,11 @@ interface Props {
     categories: Category[] | null, 
     thoughts: Thought[] | null
     user: any,
-    getUserData: (uid: string) => Promise<any>
+    getUserData: (uid: string) => Promise<any>,
+    getCategories: (uid: string) => Promise<any>
 }
 
-const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData }) => {
+const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, getCategories }) => {
 
     const [selectedThoughts, setSelectedThoughts] = useState<Thought[] | null>(thoughts);
 
@@ -56,7 +57,7 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData }) 
     
     return (
         <div className='user-page'>
-            <Nav />
+            <Nav categories={categories} user={user} getCategories={getCategories} />
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={selectedThoughts} />} />
                 <Route path='/thoughts' element={<ThoughtsList categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />} />

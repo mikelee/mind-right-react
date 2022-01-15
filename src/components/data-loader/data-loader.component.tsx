@@ -93,7 +93,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
         <div className='data-loader'>
             {
                 dataLoaded ?
-                    <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />
+                    <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} getCategories={getCategories} />
                 :
                     <SkeletonScreen />
             }

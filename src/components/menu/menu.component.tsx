@@ -5,14 +5,20 @@ import { auth } from '../../firebase';
 
 import './menu.styles.scss';
 
+import { Category } from '../data-loader/data-loader.component';
+import { User } from '../../App';
+
 import Categories from '../categories/categories.component';
 import Submenu from '../submenu/submenu.component';
 
 interface Props {
-    toggleMenu: () => void
+    categories: Category[] | null,
+    user: User | null,
+    toggleMenu: () => void,
+    getCategories: (uid: string) => Promise<any>
 }
 
-const Menu: React.FC<Props> = ({ toggleMenu }) => {
+const Menu: React.FC<Props> = ({ categories, user, toggleMenu, getCategories }) => {
 
     const [categoriesVisible, setCategoriesVisible] = useState(false);
     
