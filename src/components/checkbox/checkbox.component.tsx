@@ -3,21 +3,23 @@ import React, { useState } from 'react';
 import './checkbox.styles.scss';
 
 interface Props {
-    checked: boolean
+    checked: boolean,
+    onClick: Function
 }
 
-const Checkbox: React.FC<Props> = ({ checked }) => {
+const Checkbox: React.FC<Props> = ({ checked, onClick }) => {
 
     const [isChecked, setIsChecked] = useState(checked);
 
-    const toggleChecked = () => {
+    const toggleChecked = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        onClick(event);
         setIsChecked(!isChecked);
     }
 
     return (
         <div
             className={`checkbox ${isChecked ? 'checked' : ''}`}
-            onClick={toggleChecked}
+            onClick={(event) =>toggleChecked(event)}
         ></div>
     );
 }
