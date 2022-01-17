@@ -20,7 +20,7 @@ const Categories: React.FC<Props> = ({ categories, user, getCategories }) => {
 
     const toggleCategory = async (id: string, selected: boolean) => {
         const categoryRef = doc(db, 'categories', id);
-        updateDoc(categoryRef, { selected: !selected });
+        await updateDoc(categoryRef, { selected: !selected });
 
         // get updated categories from database
         if (user) getCategories(user.uid);
