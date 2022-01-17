@@ -2,8 +2,10 @@ import React from 'react';
 
 import './thoughts-filter.styles.scss';
 
+import { Category } from '../data-loader/data-loader.component';
+
 interface Props {
-    categories: string[] | null
+    categories: Category[] | null
 }
 
 const ThoughtsFilter: React.FC<Props> = ({ categories }) => {
