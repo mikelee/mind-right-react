@@ -21,7 +21,7 @@ interface Props {
 
 const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData }) => {
 
-    const [categoryFiltersVisible, setCategoryFiltersVisible] = useState(false);
+    const [thoughtsFilterVisible, setThoughtsFilterVisible] = useState(false);
 
     const addThought = async () => {
         const thoughtsRef = collection(db, 'thoughts');
@@ -41,10 +41,10 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
         <div className='thoughts-list'>
             <div className='buttons'>
                 <Button className='add-button' text={'Add'} onClick={addThought} />
-                <Button className='categories-button' text={'Filter'} onClick={() => setCategoryFiltersVisible(!categoryFiltersVisible)} />
+                <Button className='categories-button' text={'Filter'} onClick={() => setThoughtsFilterVisible(!thoughtsFilterVisible)} />
             </div>
             {
-                categoryFiltersVisible
+                thoughtsFilterVisible
                 ? <ThoughtsFilter categories={categories} />
                 : null
             }
