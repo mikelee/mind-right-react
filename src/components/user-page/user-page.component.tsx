@@ -21,6 +21,7 @@ interface Props {
 const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, getCategories }) => {
 
     const [selectedThoughts, setSelectedThoughts] = useState<Thought[] | null>(thoughts);
+    const [areUnselectedThoughts, setAreUnselectedThoughts] = useState(false);
 
     const updateSelectedThoughts = () => {
         // if the category is selected, put its id in the selectedCategories array
@@ -51,16 +52,26 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, ge
         if (updatedThoughts) setSelectedThoughts(updatedThoughts);
     }
 
+    const updateAreUnSelectedThoughts = (thoughts: Thought[] | null) => {
+        // sets areSelectedThoughts to true if there are thoughts in the thought array. This is used if there appears to be no thoughts (because the selected categories return no thoughts), but there are.
+        if (thoughts && thoughts.length > 0) {
+            setAreUnselectedThoughts(true);
+        } else {
+            setAreUnselectedThoughts(false);
+        }
+    }
+
     useEffect(() => {
         updateSelectedThoughts();
+        updateAreUnSelectedThoughts(thoughts);
     }, [categories]);
     
     return (
         <div className='user-page'>
             <Nav categories={categories} user={user} getCategories={getCategories} />
             <Routes>
-                <Route path='/' element={<RandomThought thoughts={selectedThoughts} />} />
-                <Route path='/thoughts' element={<ThoughtsList categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />} />
+                <Route path='/' element={<RandomThought thoughts={selectedThoughts} areUnselectedThoughts={areUnselectedThoughts} />} />
+                <Route path='/thoughts' element={<ThoughtsList categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} updateSelectedThoughts={updateSelectedThoughts} />} />
             </Routes>
         </div>
     );
