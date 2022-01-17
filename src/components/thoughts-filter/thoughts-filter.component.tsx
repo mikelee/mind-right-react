@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './category-filters.styles.scss';
+import './thoughts-filter.styles.scss';
 
 interface Props {
     categories: string[] | null
 }
 
-const CategoryFilters: React.FC<Props> = ({ categories }) => {
+const ThoughtsFilter: React.FC<Props> = ({ categories }) => {
     return (
-        <div className='category-filters'>
+        <div className='thoughts-filter'>
             {
                 categories?.map((category, index) =>
                     <div key={index} className='category'>
@@ -21,4 +21,4 @@ const CategoryFilters: React.FC<Props> = ({ categories }) => {
     );
 }
 
-export default CategoryFilters;
+export default ThoughtsFilter;

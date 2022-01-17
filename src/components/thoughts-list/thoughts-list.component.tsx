@@ -9,8 +9,8 @@ import { Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
 
 import Button from '../button/button.component';
-import CategoryFilters from '../category-filters/category-filters.component';
 import ThoughtItem from '../thought-item/thought-item.component';
+import ThoughtsFilter from '../thoughts-filter/thoughts-filter.component';
 
 interface Props {
     categories: Category[] | null,
@@ -41,11 +41,11 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
         <div className='thoughts-list'>
             <div className='buttons'>
                 <Button className='add-button' text={'Add'} onClick={addThought} />
-                <Button className='categories-button' text={'Categories'} onClick={() => setCategoryFiltersVisible(!categoryFiltersVisible)} />
+                <Button className='categories-button' text={'Filter'} onClick={() => setCategoryFiltersVisible(!categoryFiltersVisible)} />
             </div>
             {
                 categoryFiltersVisible
-                ? <CategoryFilters categories={categories} />
+                ? <ThoughtsFilter categories={categories} />
                 : null
             }
             {
