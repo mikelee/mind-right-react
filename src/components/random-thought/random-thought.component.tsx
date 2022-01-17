@@ -8,10 +8,11 @@ import Button from '../button/button.component';
 import beachImage from '../../assets/beach-image.jpeg';
 
 interface Props {
-    thoughts: Thought[] | null
+    thoughts: Thought[] | null,
+    areUnselectedThoughts: boolean
 }
 
-const RandomThought: React.FC<Props> = ({ thoughts }) => {
+const RandomThought: React.FC<Props> = ({ thoughts, areUnselectedThoughts }) => {
 
     const randomThoughtRef = useRef<any>(null);
 
@@ -39,6 +40,9 @@ const RandomThought: React.FC<Props> = ({ thoughts }) => {
             } else {
                 randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
             }
+        } else if (areUnselectedThoughts) {
+            setText('No thoughts have the selected categories');
+            randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
         } else {
             setText('Add some thoughts and get started!');
             randomThoughtRef.current.style.backgroundImage = `url(${beachImage})`;
