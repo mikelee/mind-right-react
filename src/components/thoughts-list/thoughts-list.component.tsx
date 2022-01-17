@@ -4,6 +4,7 @@ import { db } from '../../firebase';
 
 import './thoughts-list.styles.scss';
 
+import { Category } from '../data-loader/data-loader.component';
 import { Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
 
@@ -12,7 +13,7 @@ import CategoryFilters from '../category-filters/category-filters.component';
 import ThoughtItem from '../thought-item/thought-item.component';
 
 interface Props {
-    categories: string[] | null,
+    categories: Category[] | null,
     thoughts: Thought[] | null,
     user: User,
     getUserData: (uid: string) => Promise<any>
