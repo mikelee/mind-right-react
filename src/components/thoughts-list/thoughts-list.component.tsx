@@ -29,6 +29,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
         addDoc(thoughtsRef, {
             text: '',
             image: '',
+            categories: [],
             userId: user.uid,
             timestamp: Timestamp.fromMillis(Date.now())
         });
