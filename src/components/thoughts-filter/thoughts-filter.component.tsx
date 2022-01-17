@@ -9,13 +9,14 @@ interface Props {
 }
 
 const ThoughtsFilter: React.FC<Props> = ({ categories }) => {
+
     return (
         <div className='thoughts-filter'>
             {
                 categories?.map((category, index) =>
                     <div key={index} className='category'>
                         <input type='checkbox' />
-                        <p>{category}</p>
+                        <p>{category.name}</p>
                     </div>
                 )
             }
