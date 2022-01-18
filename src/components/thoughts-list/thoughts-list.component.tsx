@@ -106,11 +106,3 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
 }
 
 export default ThoughtsList;
-
-
-//ThoughtsList gets all thoughts
-// ThoughtsList gets all categories
-    // Categories are remade to have selected set to false on mount. These new categories are sent to ThoughtsFilter along with setNewCategories()
-// ThoughtsFilter gets new categories
-    // Click a category, setNewCategories() is called
-    // ThoughtsList get the newCategories, a useEffect depends on them. It calls setFilteredThoughts. Filtered Thoughts are displayed in ThoughtsList
