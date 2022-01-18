@@ -5,7 +5,11 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 70%;
+    background-color: #f2f2f2;
     margin-top: 3rem;
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+    box-sizing: border-box;
 
     .category {
         display: flex;
