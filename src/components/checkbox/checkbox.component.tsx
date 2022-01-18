@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './checkbox.styles.scss';
 
@@ -9,17 +9,10 @@ interface Props {
 
 const Checkbox: React.FC<Props> = ({ checked, onClick }) => {
 
-    const [isChecked, setIsChecked] = useState(checked);
-
-    const toggleChecked = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        onClick(event);
-        setIsChecked(!isChecked);
-    }
-
     return (
         <div
-            className={`checkbox ${isChecked ? 'checked' : ''}`}
-            onClick={(event) =>toggleChecked(event)}
+            className={`checkbox ${checked ? 'checked' : ''}`}
+            onClick={(event) => onClick(event)}
         ></div>
     );
 }
