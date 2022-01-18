@@ -31,12 +31,16 @@ const ThoughtsFilter: React.FC<Props> = ({ categories, setFilterCategories }) =>
     return (
         <div className='thoughts-filter'>
             {
-                categories?.map((category, index) =>
-                    <div key={index} className='category'>
-                        <Checkbox checked={category.selected} onClick={() => updateCategories(category.id)} />
-                        <p>{category.name}</p>
-                    </div>
-                )
+                categories?.length !== 0
+                ?
+                    categories?.map((category, index) =>
+                        <div key={index} className='category'>
+                            <Checkbox checked={category.selected} onClick={() => updateCategories(category.id)} />
+                            <p>{category.name}</p>
+                        </div>
+                    )
+                :
+                <p className='no-categories-message'>No categories</p>
             }
         </div>
     );
