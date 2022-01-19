@@ -1,10 +1,19 @@
+@import '../../variables';
+
 .categories {
     display: flex;
-    flex-wrap: wrap;
-    min-width: 70rem;
-    color: black;
-    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;    
     cursor: default;
+
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 70rem;
+        color: black;
+        padding-bottom: 1rem;
+    }
 
     .category {
         display: flex;
@@ -13,6 +22,35 @@
 
         &-text {
             white-space: nowrap;
+        }
+    }
+
+    .add-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 2rem;
+
+        .add-button {
+            margin-right: 2rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+
+            input[type=text] {
+                align-self: flex-end;
+                height: fit-content;
+                width: 50%;
+                padding: 1rem;
+                font-size: 1.6rem;
+                border: none;
+                border-bottom: 2px solid $color-mint-dark;
+            }
         }
     }
 }
