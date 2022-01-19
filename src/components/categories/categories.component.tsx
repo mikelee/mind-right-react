@@ -64,7 +64,7 @@ const Categories: React.FC<Props> = ({ categories, user, getCategories }) => {
                     displayAddInput
                     ? 
                         <form>
-                            <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} />
+                            <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
                             <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
                         </form>
                     : <Button className='add-button' text='Add' onClick={() => setDisplayAddInput(true)} />
