@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 
 import './nav.styles.scss';
 
-import { Category } from '../data-loader/data-loader.component';
+import { Category, Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
 
 import Menu from '../menu/menu.component';
 
 interface Props {
     categories: Category[] | null,
+    thoughts: Thought[] | null,
     user: User | null,
-    getCategories: (uid: string) => Promise<any>
+    getCategories: (uid: string) => Promise<any>,
+    getUserData: (uid: string) => Promise<any>
 }
 
-const Nav: React.FC<Props> = ({ categories, user, getCategories }) => {
+const Nav: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUserData }) => {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
@@ -25,7 +27,7 @@ const Nav: React.FC<Props> = ({ categories, user, getCategories }) => {
         <div className='nav'>
             {
                 menuVisible
-                ? <Menu categories={categories} user={user} toggleMenu={toggleMenu} getCategories={getCategories} />
+                ? <Menu categories={categories} thoughts={thoughts} user={user} toggleMenu={toggleMenu} getCategories={getCategories} getUserData={getUserData} />
                 : null
             }
             <svg className='menu-button' onClick={toggleMenu} width="150px" height="65px" viewBox="-10 -10 170 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">

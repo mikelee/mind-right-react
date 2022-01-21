@@ -5,7 +5,7 @@ import { auth } from '../../firebase';
 
 import './menu.styles.scss';
 
-import { Category } from '../data-loader/data-loader.component';
+import { Category, Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
 
 import Categories from '../categories/categories.component';
@@ -13,12 +13,14 @@ import Submenu from '../submenu/submenu.component';
 
 interface Props {
     categories: Category[] | null,
+    thoughts: Thought[] | null,
     user: User | null,
     toggleMenu: () => void,
     getCategories: (uid: string) => Promise<any>
+    getUserData: (uid: string) => Promise<any>
 }
 
-const Menu: React.FC<Props> = ({ categories, user, toggleMenu, getCategories }) => {
+const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCategories, getUserData }) => {
 
     const [categoriesVisible, setCategoriesVisible] = useState(false);
     
@@ -46,7 +48,7 @@ const Menu: React.FC<Props> = ({ categories, user, toggleMenu, getCategories }) 
                 Categories
                 {
                     categoriesVisible
-                    ? <Submenu childComponent={<Categories categories={categories} user={user} getCategories={getCategories} />} />
+                    ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
                     : null
                 }
             </div>
