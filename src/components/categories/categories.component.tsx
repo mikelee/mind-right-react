@@ -103,10 +103,13 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                 {
                     displayAddInput
                     ? 
-                        <form>
-                            <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
-                            <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
-                        </form>
+                        <>
+                            <form>
+                                <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
+                                <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
+                            </form>
+                            <button className='cancel-add-button' onClick={() => setDisplayAddInput(false)}>Cancel</button>
+                        </>
                     : <Button className='add-button' text='Add' onClick={() => setDisplayAddInput(true)} />
                 }
             </div>
@@ -120,7 +123,6 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                     </div>
                 : null
             }
-            
         </div>
     );
 }
