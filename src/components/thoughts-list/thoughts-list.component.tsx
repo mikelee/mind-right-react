@@ -47,7 +47,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
     const updateFilteredThoughts = (filterCategories: Category[]) => {
         // if the category is selected, put its id in the selectedCategories array
         let selectedCategories: string[] = [];
-        filterCategories?.map((category: Category) => {
+        filterCategories?.forEach((category: Category) => {
             if (category.selected) {
                 selectedCategories.push(category.id);
             };
