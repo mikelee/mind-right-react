@@ -64,7 +64,11 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
 
             // get thoughts that have the deleted category in their categories array
             const thoughtsWithCategory = thoughts?.filter(thought => {
-                if (thought.categories.includes(categoryForDeletion.id)) return true;
+                if (thought.categories.includes(categoryForDeletion.id)) {
+                    return true;
+                } else {
+                    return false;
+                }
             });
 
             // remove the deleted category from each thought's category array
