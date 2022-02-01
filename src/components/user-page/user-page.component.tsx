@@ -26,7 +26,7 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, ge
     const updateSelectedThoughts = () => {
         // if the category is selected, put its id in the selectedCategories array
         let selectedCategories: string[] = [];
-        categories?.map(category => {
+        categories?.forEach(category => {
             if (category.selected) {
                 selectedCategories.push(category.id);
             };
