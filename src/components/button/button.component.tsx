@@ -8,11 +8,12 @@ interface Props {
     name?: string,
     dataTestId?: string,
     className?: string,
-    type?: string
+    type?: 'button' | 'submit' | 'reset' | undefined,
+    form?: string | undefined
 }
 
-const Button: React.FC<Props> = ({ className, dataTestId, name, onClick, text }) => (
-    <button className={`button ${className ? className : ''}`} onClick={onClick} name={name} data-testid={dataTestId} >{text}</button>
+const Button: React.FC<Props> = ({ className, dataTestId, form, name, onClick, text, type }) => (
+    <button className={`button ${className ? className : ''}`} onClick={onClick} name={name} type={type} form={form} data-testid={dataTestId} >{text}</button>
 );
 
 export default Button;
