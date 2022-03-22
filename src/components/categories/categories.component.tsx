@@ -25,6 +25,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
     const [newCategoryName, setNewCategoryName] = useState('');
     const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
     const [categoryForDeletion, setCategoryForDeletion] = useState<Category | null>(null);
+    const [tab, setTab] = useState<'select' | 'edit'>('select');
 
     const addCategory = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -91,39 +92,95 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
         }
     }
 
+    const save = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const form = (e.currentTarget as HTMLFormElement);
+        
+        // loop through previous categories and get each form input with that category's id
+        categories?.forEach(async category => {
+            const inputField = form[category.id];
+            const updatedCategory = inputField.value;
+
+            // Update category if the name is different
+            if (category.name !== updatedCategory) {
+                const categoryRef = doc(db, 'categories', category.id);
+
+                await updateDoc(categoryRef, {
+                    name: updatedCategory
+                })
+            }
+        });
+
+
+        if (user) getUserData(user.uid);
+    }
+
     return (
         <div className='categories'>
-            <div className='categories-list'>
-                {
-                    categories?.map(category =>
-                        <div key={category.id} className='category'>
-                            <Checkbox checked={category.selected} onClick={() => toggleCategory(category.id, category.selected)} />
-                            <p className='category-text' onDoubleClick={() => clickDelete(category)} >{category.name}</p>
-                        </div>
-                    )
-                }
+            <div className='categories-tabs'>
+                <div className={`categories-tabs--select ${tab !== 'select' ? 'background-tab background-tab--select' : ''}`} onClick={() => setTab('select')}>
+                    <p>Select</p>
+                </div>
+                <div className={`categories-tabs--edit ${tab !== 'edit' ? 'background-tab background-tab--edit' : ''}`}  onClick={() => setTab('edit')}>
+                    <p>Edit</p>
+                </div>
             </div>
-            <div className='add-section'>
                 {
-                    displayAddInput
+                    tab === 'select'
+                    ?
+                        <div className='categories-list'>
+                            {categories?.map(category => 
+                                <div className='category-item' key={category.id} >
+                                    <Checkbox checked={category.selected} onClick={() => toggleCategory(category.id, category.selected)} />
+                                    <p className='text' onDoubleClick={() => clickDelete(category)} >{category.name}</p>
+                                </div>
+                            )}
+                        </div>
+
+                    :
+                        <form id='categories-form' onSubmit={e => save(e)}>
+                            {
+                                categories?.map(category =>
+                                    <div className='categories-form-input' key={category.id}>
+                                        <input defaultValue={category.name} name={category.id} />
+                                    </div>
+                                )
+                            }
+                        </form>
+                }
+            <div className='categories-buttons'>
+                {
+                    tab === 'select'
                     ? 
                         <>
-                            <form>
-                                <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
-                                <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
-                            </form>
-                            <button className='cancel-add-button' onClick={() => setDisplayAddInput(false)}>Cancel</button>
+                            {
+                                displayAddInput
+                                ?
+                                    <div className='add-category-section'>
+                                        <form>
+                                            <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
+                                            <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
+                                        </form>
+                                        <button className='cancel-add-button' onClick={() => setDisplayAddInput(false)}>Cancel</button>
+                                    </div>
+                                :
+                                    <Button text='Add' onClick={() => setDisplayAddInput(true)} />
+                            }
+                            
                         </>
-                    : <Button className='add-button' text='Add' onClick={() => setDisplayAddInput(true)} />
-                }
+                    : <Button text='Save' type='submit' form='categories-form' className='categories-save-button' />
+                }                
             </div>
             {
                 confirmDeleteVisible && categoryForDeletion
                 ?
                     <div className='confirm-delete'>
                         <p>{`Are you sure you want to delete ${categoryForDeletion.name}?`}</p>
-                        <button onClick={() => setConfirmDeleteVisible(false)}>Cancel</button>
-                        <button onClick={() => deleteCategory()}>Delete</button>
+                        <div className='confirm-delete-buttons'>
+                            <button onClick={() => setConfirmDeleteVisible(false)}>Cancel</button>
+                            <button onClick={() => deleteCategory()}>Delete</button>
+                        </div>
                     </div>
                 : null
             }
