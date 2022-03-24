@@ -67,6 +67,17 @@
         &-list {
             font-size: 1.4rem;
             text-shadow: 0 0 .5rem white;
+
+            .thought-category {
+                cursor: pointer;
+                transition: all .3s;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transform: rotate(-5deg);
+                    color: red;
+                }
+            }
         }
     }
 

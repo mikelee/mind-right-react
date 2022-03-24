@@ -80,6 +80,24 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
         displayAddableCategories();
     }
 
+    const deleteCategory = async (thoughtCategoryId: string) => {
+        // find thoughtCategory and remove it
+        for (let i = 0; i < thoughtCategories.length; i++) {
+            if (thoughtCategories[i].id === thoughtCategoryId) {
+                thoughtCategories.splice(i, 1);
+            }
+        }
+
+        const thoughtRef = doc(db, 'thoughts', id);
+
+        // update thought's categories list
+        updateDoc(thoughtRef, {
+            categories: thoughtCategories
+        });
+
+        if (user) await getUserData(user.uid);
+    }
+
     return (
         <div className='thought-item' style={image !== '' ? {backgroundImage: `url(${image})`} : {backgroundImage: `url(${beachImage})`}}>
             <form onBlur={(e) => editThought(e)} >
@@ -96,7 +114,7 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
                 <Button className='thought-categories-add-button' text='Add' onClick={() => displayAddableCategories()} />
                 <div className='thought-categories-list'>
                     {
-                        thoughtCategories?.map((thoughtCategory) => <p key={thoughtCategory.id}>{thoughtCategory.name}</p>)
+                        thoughtCategories?.map((thoughtCategory) => <p className='thought-category' key={thoughtCategory.id} onClick={() => deleteCategory(thoughtCategory.id)} >{thoughtCategory.name}</p>)
                     }
                 </div>
             </div>
