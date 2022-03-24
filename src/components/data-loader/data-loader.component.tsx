@@ -20,7 +20,7 @@ export interface ThoughtCategory {
 
 export interface Thought {
     id: string,
-    categories: string[],
+    categories: ThoughtCategory[],
     text: string,
     image: string
 }

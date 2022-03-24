@@ -63,8 +63,8 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
         const updatedThoughts = thoughts?.filter(thought => {
             let isTrue= false;
 
-            thought.categories.forEach(categoryId => {
-                if (selectedCategories?.includes(categoryId)) isTrue = true;
+            thought.categories.forEach(category => {
+                if (selectedCategories?.includes(category.id)) isTrue = true;
             });
 
             return isTrue;
@@ -99,7 +99,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
                 : null
             }
             {
-                filteredThoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} user={user} getUserData={getUserData} />)
+                filteredThoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} thoughtCategories={thought.categories} categories={categories} user={user} getUserData={getUserData} />)
             }
         </div>
     );

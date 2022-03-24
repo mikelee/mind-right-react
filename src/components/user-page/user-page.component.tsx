@@ -42,8 +42,8 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, ge
         const updatedThoughts = thoughts?.filter(thought => {
             let isTrue= false;
 
-            thought.categories.forEach(categoryId => {
-                if (selectedCategories?.includes(categoryId)) isTrue = true;
+            thought.categories.forEach(category => {
+                if (selectedCategories?.includes(category.id)) isTrue = true;
             });
 
             return isTrue;
