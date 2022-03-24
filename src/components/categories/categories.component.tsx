@@ -61,29 +61,23 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
         if (categoryForDeletion) {
             const categoryRef = doc(db, 'categories', categoryForDeletion.id);
 
+            // delete category from categories
             await deleteDoc(categoryRef);
 
-            // get thoughts that have the deleted category in their categories array
-            const thoughtsWithCategory = thoughts?.filter(thought => {
-                if (thought.categories.includes(categoryForDeletion.id)) {
-                    return true;
-                } else {
-                    return false;
+            // remove category from every thought's categories
+            thoughts?.forEach(async thought => {
+                for (let i = 0; i < thought.categories.length; i++) {
+                    if (thought.categories[i].id === categoryForDeletion.id) {
+                        thought.categories.splice(i, 1);
+
+                        const thoughtRef = doc(db, 'thoughts', thought.id);
+
+                        await updateDoc(thoughtRef, {
+                            categories: thought.categories
+                        });
+                    }
                 }
             });
-
-            // remove the deleted category from each thought's category array
-            thoughtsWithCategory?.forEach(thought => {
-                const categoryIndex = thought.categories.indexOf(categoryForDeletion.id);
-                thought.categories.splice(categoryIndex, 1);
-
-                const thoughtRef = doc(db, 'thoughts', thought.id);
-
-                updateDoc(thoughtRef, {
-                    categories: thought.categories
-                });
-            });
-
 
             // update categories and thoughts
             if (user) await getUserData(user.uid);
