@@ -13,6 +13,11 @@ export interface Category {
     selected: boolean
 }
 
+export interface ThoughtCategory {
+    id: string,
+    name: string
+}
+
 export interface Thought {
     id: string,
     categories: string[],
