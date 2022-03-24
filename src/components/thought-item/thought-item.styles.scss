@@ -2,7 +2,9 @@
 
 .thought-item {
     display: flex;
-    justify-content: center;    
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
     width: 70%;
     background-color: white;
     background-size: cover;
@@ -57,9 +59,50 @@
     }
 
     .thought-categories {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 2rem;
+
+        &-list {
+            font-size: 1.4rem;
+            text-shadow: 0 0 .5rem white;
+        }
+    }
+
+    .addable-categories {
+        display: flex;
+        flex-direction: column;
         position: absolute;
-        bottom: 1rem;
-        right: 1rem;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 5;
+        box-sizing: border-box;
         background-color: white;
+        padding: 2rem;
+        border: 2px solid $color-mint-dark;
+        border-left: 0;
+        border-radius: 0 .5rem .5rem 0;
+        box-shadow: -1rem 0 1rem rgba(black, .3);
+
+        .addable-categories-list {
+            display: flex;
+            flex-direction: column;
+            overflow: scroll;
+    
+            .addable-category {
+                display: flex;
+                align-items: center;
+                margin: .5rem 0;
+                font-size: 1.6rem;
+            }
+        }
+
+        .done-button {
+            align-self: center;
+            margin-top: 2rem;
+        }
     }
 }
