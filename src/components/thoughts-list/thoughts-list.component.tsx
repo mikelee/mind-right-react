@@ -99,7 +99,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
                 : null
             }
             {
-                filteredThoughts?.map(thought => <ThoughtItem key={thought.id} {...thought} thoughtCategories={thought.categories} categories={categories} user={user} getUserData={getUserData} />)
+                filteredThoughts?.map(thought => <ThoughtItem key={thought.id} id={thought.id} text={thought.text} image={thought.image} thoughtCategories={thought.categories} categories={categories} user={user} getUserData={getUserData} />)
             }
         </div>
     );
