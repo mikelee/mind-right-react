@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -26,6 +26,10 @@ interface Props {
 const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, image, id, user, getUserData }) => {
 
     const [addableCategories, setAddableCategories] = useState<Category[] | undefined | null>(null);
+
+    useEffect(() => {
+        if (addableCategories) displayAddableCategories();
+    }, [thoughtCategories]);
 
     const deleteThought = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, thoughtId: string) => {
         e.preventDefault();
@@ -75,9 +79,6 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
         
         // refresh user data
         if (user) await getUserData(user.uid);
-
-        // update addableCategories so it doesn't include the category that was just added
-        displayAddableCategories();
     }
 
     const deleteCategory = async (thoughtCategoryId: string) => {
