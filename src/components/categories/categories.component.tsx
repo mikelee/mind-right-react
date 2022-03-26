@@ -102,12 +102,30 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
 
                 await updateDoc(categoryRef, {
                     name: updatedCategory
-                })
+                });
+
+                if (thoughts) {
+                    await Promise.all(thoughts.map(async thought => {
+                        for (let i = 0; i < thought.categories.length; i++) {
+                            if (thought.categories[i].id === category.id) {
+                                thought.categories[i] = {
+                                    id: category.id,
+                                    name: updatedCategory
+                                };
+    
+                                const thoughtRef = doc(db, 'thoughts', thought.id);
+    
+                                await updateDoc(thoughtRef, {
+                                    categories: thought.categories
+                                });
+                            }
+                        }
+                    }));
+                    
+                    if (user) await getUserData(user.uid);
+                }
             }
         });
-
-
-        if (user) getUserData(user.uid);
     }
 
     return (
