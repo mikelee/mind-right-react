@@ -155,7 +155,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                             {
                                 categories?.map(category =>
                                     <div className='categories-form-input' key={category.id}>
-                                        <input defaultValue={category.name} name={category.id} />
+                                        <input defaultValue={category.name} name={category.id} autoComplete='off' />
                                     </div>
                                 )
                             }
