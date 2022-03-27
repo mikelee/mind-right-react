@@ -54,14 +54,14 @@ const DataLoader: React.FC<Props> = ({ user }) => {
     }
 
     const getThoughts = async (uid: string) => {
-        const thoughts: any = [];
+        const thoughts: Thought[] = [];
 
         const thoughtsRef = collection(db, 'thoughts');
         const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid), orderBy('timestamp', 'desc'));
         const usersThoughts = await getDocs(thoughtsQuery);
 
         usersThoughts.docs.forEach(el => {
-                const data = el.data();
+                const data = (el.data() as Thought);
 
                 const thought = {
                     ...data,
