@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import { User } from '../../App'; 
@@ -22,7 +22,9 @@ export interface Thought {
     id: string,
     categories: ThoughtCategory[],
     text: string,
-    image: string
+    image: string,
+    timestamp?: Timestamp,
+    userId?: string
 }
 
 interface Props {
