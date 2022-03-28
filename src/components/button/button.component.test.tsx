@@ -1,5 +1,5 @@
-import Button from './button.component';
 import { fireEvent, render, screen } from '@testing-library/react';
+import Button from './button.component';
 
 it('should run onClick function', () => {
     const mock = jest.fn();

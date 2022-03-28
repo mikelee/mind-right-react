@@ -1,5 +1,5 @@
-import Checkbox from './checkbox.component';
 import { fireEvent, render, screen } from '@testing-library/react';
+import Checkbox from './checkbox.component';
 
 it('should call Checkbox onClick function', () => {
     const mock = jest.fn();
