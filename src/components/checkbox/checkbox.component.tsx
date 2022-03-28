@@ -11,6 +11,7 @@ const Checkbox: React.FC<Props> = ({ checked, onClick }) => (
     <div
         className={`checkbox ${checked ? 'checked' : ''}`}
         onClick={(event) => onClick(event)}
+        data-testid='checkbox'
     ></div>
 );
 
