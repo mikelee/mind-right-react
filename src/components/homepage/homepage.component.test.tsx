@@ -1,9 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import Homepage from './homepage.component';
 
-it('should display Login component when login button clicked', () => {
-    render(<Homepage />);
+beforeEach(() => {
+    render(
+        <MemoryRouter>
+            <Homepage />
+        </MemoryRouter>
+    );
+});
 
+it('should display Login component when login button clicked', () => {
     expect(screen.queryByTestId('login-component')).not.toBeInTheDocument();
 
     const signInButton = screen.getByTestId('sign-in-button');
@@ -13,8 +20,6 @@ it('should display Login component when login button clicked', () => {
 });
 
 it('should display sign up title and not sign in title', () => {
-    render(<Homepage />);
-
     expect(screen.queryByTestId('sign-up-title')).not.toBeInTheDocument();
 
     const signUpButton = screen.getByTestId('sign-up-button');
@@ -25,8 +30,6 @@ it('should display sign up title and not sign in title', () => {
 });
 
 it('should display sign in title and not sign up title', () => {
-    render(<Homepage />);
-
     expect(screen.queryByTestId('sign-in-title')).not.toBeInTheDocument();
 
     const signInButton = screen.getByTestId('sign-in-button');
