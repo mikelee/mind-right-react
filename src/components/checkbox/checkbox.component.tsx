@@ -7,14 +7,11 @@ interface Props {
     onClick: Function
 }
 
-const Checkbox: React.FC<Props> = ({ checked, onClick }) => {
-
-    return (
-        <div
-            className={`checkbox ${checked ? 'checked' : ''}`}
-            onClick={(event) => onClick(event)}
-        ></div>
-    );
-}
+const Checkbox: React.FC<Props> = ({ checked, onClick }) => (
+    <div
+        className={`checkbox ${checked ? 'checked' : ''}`}
+        onClick={(event) => onClick(event)}
+    ></div>
+);
 
 export default Checkbox;
