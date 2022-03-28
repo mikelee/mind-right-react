@@ -1,8 +1,13 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from 'react-router-dom';
 import Login from './login.component';
 
 it('should display sign up button', () => {
-    render(<Login type='sign-up'/>);
+    render(
+        <MemoryRouter>
+            <Login type='sign-up'/>
+        </MemoryRouter>
+    );
 
     const signUpButton = screen.getByRole('button', {
         name: 'Sign Up'
@@ -12,7 +17,11 @@ it('should display sign up button', () => {
 });
 
 it('should display sign in button', () => {
-    render(<Login type='sign-in'/>);
+    render(
+        <MemoryRouter>
+            <Login type='sign-in'/>
+        </MemoryRouter>
+    );
 
     const signInButton = screen.getByRole('button', {
         name: 'Sign In'
