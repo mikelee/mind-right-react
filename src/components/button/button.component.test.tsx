@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Button from './button.component';
 
 it('should run onClick function', () => {
@@ -9,7 +10,7 @@ it('should run onClick function', () => {
 
     const button = screen.getByRole('button');
 
-    fireEvent.click(button);
+    userEvent.click(button);
 
     expect(mock).toBeCalledTimes(1);
 });

@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Checkbox from './checkbox.component';
 
 it('should call Checkbox onClick function', () => {
@@ -8,7 +9,7 @@ it('should call Checkbox onClick function', () => {
 
     const checkbox = screen.getByTestId('checkbox');
 
-    fireEvent.click(checkbox);
+    userEvent.click(checkbox);
 
     expect(mock).toHaveBeenCalledTimes(1);
 });
