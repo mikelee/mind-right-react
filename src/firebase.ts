@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, DocumentData, FieldPath, getDocs, getFirestore, orderBy, OrderByDirection, query, updateDoc, where } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyDVNc_hcsOwjf8SbHvbvgs9MdPd7ZVyftQ',
@@ -30,4 +30,35 @@ export const addNewUser = async (userData: UserData) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const getDocuments = async (uid: string, collectionName: string, orderByType: { field: string | FieldPath, direction: OrderByDirection }) => {
+    const collectionRef = collection(db, collectionName);
+    const collectionQuery = query(collectionRef, where('userId', '==', uid), orderBy(orderByType.field, orderByType.direction));
+    const documentsSnapshot = await getDocs(collectionQuery);
+
+    const documents: DocumentData = [];
+
+    documentsSnapshot.forEach(doc => {
+        const data = {
+            id: doc.id,
+            ...doc.data()
+        }
+
+        documents.push(data);
+    })
+
+    return documents;
+}
+
+export const updateDocument = async (collectionName: string, id: string, updatedData: any) => {
+    const docRef = doc(db, collectionName, id);
+
+    await updateDoc(docRef, {...updatedData});
+}
+
+export const deleteDocument = async (collectionName: string, id: string) => {
+    const docRef = doc(db, collectionName, id);
+
+    await deleteDoc(docRef);
 }
