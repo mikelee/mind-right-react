@@ -79,7 +79,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
     }
 
     return (
-        <div className='data-loader'>
+        <div className='data-loader' data-testid='data-loader'>
             {
                 dataLoaded ?
                     <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} getCategories={getCategories} />

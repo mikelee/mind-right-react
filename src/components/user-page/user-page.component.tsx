@@ -67,7 +67,7 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, ge
     }, [categories]);
     
     return (
-        <div className='user-page'>
+        <div className='user-page' data-testid='user-page'>
             <Nav categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={selectedThoughts} areUnselectedThoughts={areUnselectedThoughts} />} />
