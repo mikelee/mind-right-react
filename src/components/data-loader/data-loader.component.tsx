@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, query, where, orderBy, Timestamp } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { getDocuments } from '../../firebase';
 
+import { Timestamp } from 'firebase/firestore';
 import { User } from '../../App'; 
 
 import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
@@ -54,44 +54,26 @@ const DataLoader: React.FC<Props> = ({ user }) => {
     }
 
     const getThoughts = async (uid: string) => {
-        const thoughts: Thought[] = [];
+        const usersThoughts = await getDocuments(uid, 'thoughts', {field: 'timestamp', direction: 'desc'});
 
-        const thoughtsRef = collection(db, 'thoughts');
-        const thoughtsQuery = query(thoughtsRef, where('userId', '==', uid), orderBy('timestamp', 'desc'));
-        const usersThoughts = await getDocs(thoughtsQuery);
+        const thoughts = usersThoughts.map((thought: Thought) => ({
+            id: thought.id,
+            categories: thought.categories,
+            text: thought.text,
+            image: thought.image
+        }));
 
-        usersThoughts.docs.forEach(el => {
-                const data = (el.data() as Thought);
-
-                const thought = {
-                    ...data,
-                    id: el.id
-                }
-
-                thoughts.push(thought);
-            });
-
-            setThoughts(thoughts);
+        setThoughts(thoughts);
     }
 
     const getCategories = async (uid: string) => {
-        const categories: Category[] = [];
+        const usersCategories = await getDocuments(uid, 'categories', {field: 'name', direction: 'asc'});
 
-        const categoriesRef = collection(db, 'categories');
-        const categoriesQuery = query(categoriesRef, where('userId', '==', uid), orderBy('name', 'asc'));
-        const usersCategories = await getDocs(categoriesQuery);
-
-        usersCategories.forEach(el => {
-            const data = el.data();
-
-            const category = {
-                id: el.id,
-                name: data.name,
-                selected: data.selected
-            }
-
-            categories.push(category);
-        });
+        const categories = usersCategories.map((category: Category) => ({
+            id: category.id,
+            name: category.name,
+            selected: category.selected
+        }));
         
         setCategories(categories);
     }
