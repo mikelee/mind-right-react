@@ -32,6 +32,12 @@ export const addNewUser = async (userData: UserData) => {
     }
 }
 
+export const addDocument = async (collectionName: string, documentData: any) => {
+    const collectionRef = collection(db, collectionName);
+
+    await addDoc(collectionRef, documentData);
+}
+
 export const getDocuments = async (uid: string, collectionName: string, orderByType: { field: string | FieldPath, direction: OrderByDirection }) => {
     const collectionRef = collection(db, collectionName);
     const collectionQuery = query(collectionRef, where('userId', '==', uid), orderBy(orderByType.field, orderByType.direction));
