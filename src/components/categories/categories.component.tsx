@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { doc, collection, updateDoc, addDoc, deleteDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { addDocument, deleteDocument, updateDocument } from '../../firebase';
 
 import './categories.styles.scss';
 
@@ -31,13 +30,13 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
         e.preventDefault();
 
         if (user) {
-            const categoriesRef = collection(db, 'categories');
-    
-            await addDoc(categoriesRef, {
+            const category = {
                 name: newCategoryName,
                 selected: false,
                 userId: user.uid
-            });
+            }
+
+            await addDocument('categories', category);
 
             await getCategories(user.uid);
             setDisplayAddInput(false);
@@ -45,8 +44,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
     }
 
     const toggleCategory = async (id: string, selected: boolean) => {
-        const categoryRef = doc(db, 'categories', id);
-        await updateDoc(categoryRef, { selected: !selected });
+        await updateDocument('categories', id, { selected: !selected });
 
         // get updated categories from database
         if (user) getCategories(user.uid);
@@ -59,10 +57,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
 
     const deleteCategory = async () => {
         if (categoryForDeletion) {
-            const categoryRef = doc(db, 'categories', categoryForDeletion.id);
-
-            // delete category from categories
-            await deleteDoc(categoryRef);
+            await deleteDocument('categories', categoryForDeletion.id);
 
             // remove category from every thought's categories
             thoughts?.forEach(async thought => {
@@ -70,11 +65,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                     if (thought.categories[i].id === categoryForDeletion.id) {
                         thought.categories.splice(i, 1);
 
-                        const thoughtRef = doc(db, 'thoughts', thought.id);
-
-                        await updateDoc(thoughtRef, {
-                            categories: thought.categories
-                        });
+                        await updateDocument('thoughts', thought.id, { categories: thought.categories });
                     }
                 }
             });
@@ -98,11 +89,7 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
 
             // Update category if the name is different
             if (category.name !== updatedCategory) {
-                const categoryRef = doc(db, 'categories', category.id);
-
-                await updateDoc(categoryRef, {
-                    name: updatedCategory
-                });
+                await updateDocument('categories', category.id, { name: updatedCategory });
 
                 if (thoughts) {
                     await Promise.all(thoughts.map(async thought => {
@@ -112,12 +99,8 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                                     id: category.id,
                                     name: updatedCategory
                                 };
-    
-                                const thoughtRef = doc(db, 'thoughts', thought.id);
-    
-                                await updateDoc(thoughtRef, {
-                                    categories: thought.categories
-                                });
+
+                                await updateDocument('thoughts', thought.id, { categories: thought.categories });
                             }
                         }
                     }));
