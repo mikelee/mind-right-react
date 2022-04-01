@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^9.5.3",
     "sass": "^1.43.3"
   }
 }
