@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { deleteDocument, updateDocument } from '../../firebase';
 
 import './thought-item.styles.scss';
 
@@ -34,8 +33,7 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
     const deleteThought = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, thoughtId: string) => {
         e.preventDefault();
 
-        const thoughtRef = doc(db, 'thoughts', thoughtId);
-        await deleteDoc(thoughtRef);
+        await deleteDocument('thoughts', thoughtId);
 
         getUserData(user.uid);
     }
@@ -43,11 +41,7 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
     const editThought = async (e: React.FocusEvent<HTMLFormElement, Element>) => {
         const { name, value } = e.target;
 
-        const thoughtRef = doc(db, 'thoughts', id);
-
-        await updateDoc(thoughtRef, {
-            [name]: value
-        });
+        await updateDocument('thoughts', id, { [name]: value });
 
         getUserData(user.uid);
     }
@@ -70,12 +64,8 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
         // add category to thoughtCategories
         const newThoughtCategories = [...thoughtCategories, category];
         
-        const thoughtRef = doc(db, 'thoughts', id);
-        
         // update thought's categories
-        await updateDoc(thoughtRef, {
-            categories: newThoughtCategories
-        });
+        await updateDocument('thoughts', id, { categories: newThoughtCategories });
         
         // refresh user data
         if (user) await getUserData(user.uid);
@@ -89,12 +79,8 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
 
                 newThoughtCategories.splice(i, 1);
 
-                const thoughtRef = doc(db, 'thoughts', id);
-
                 // update thought's categories list
-                await updateDoc(thoughtRef, {
-                    categories: newThoughtCategories
-                });
+                await updateDocument('thoughts', id, { categories: newThoughtCategories });
             }
         }        
 
