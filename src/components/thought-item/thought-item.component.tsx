@@ -106,12 +106,15 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
                     <div className='addable-categories'>
                         <div className='addable-categories-list'>
                             {
-                                addableCategories?.map(addableCategory =>
-                                    <div className='addable-category' key={addableCategory.id}>
-                                        <Checkbox checked={false} onClick={() => addCategory(addableCategory)} />
-                                        <p>{addableCategory.name}</p>
-                                    </div>
-                                )
+                                addableCategories?.length === 0
+                                ? <p className='no-addable-categories'>No categories to add</p>
+                                :
+                                    addableCategories?.map(addableCategory =>
+                                        <div className='addable-category' key={addableCategory.id}>
+                                            <Checkbox checked={false} onClick={() => addCategory(addableCategory)} />
+                                            <p>{addableCategory.name}</p>
+                                        </div>
+                                    )
                             }
                         </div>
                         <Button className='done-button' text='Done' onClick={() => setAddableCategories(null)} />

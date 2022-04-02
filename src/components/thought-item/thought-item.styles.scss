@@ -103,6 +103,12 @@
             display: flex;
             flex-direction: column;
             overflow: scroll;
+
+            .no-addable-categories {
+                color: $color-mint-dark;
+                font-size: 2rem;
+                text-align: center;
+            }
     
             .addable-category {
                 display: flex;
