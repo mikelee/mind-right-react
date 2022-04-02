@@ -72,17 +72,10 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
     }
 
     const deleteCategory = async (thoughtCategoryId: string) => {
-        // find thoughtCategory and remove it
-        for (let i = 0; i < thoughtCategories.length; i++) {
-            if (thoughtCategories[i].id === thoughtCategoryId) {
-                const newThoughtCategories = [...thoughtCategories];
+        const newThoughtCategories = thoughtCategories.filter(thoughtCategory => thoughtCategory.id !== thoughtCategoryId);
 
-                newThoughtCategories.splice(i, 1);
-
-                // update thought's categories list
-                await updateDocument('thoughts', id, { categories: newThoughtCategories });
-            }
-        }        
+        // update thought's categories list
+        await updateDocument('thoughts', id, { categories: newThoughtCategories });
 
         if (user) await getUserData(user.uid);
     }
