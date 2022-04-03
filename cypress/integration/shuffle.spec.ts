@@ -1,5 +1,5 @@
 beforeEach(() => {
-    const uid = 'EaEu8zAupdXJPWKtCcpKhGJP8Bi1';
+    const uid = 'PsRL0Nqd20fcPYDHrzsOV9yF9j62';
     cy.login(uid);
     cy.visit('http://localhost:3000/home');
 });

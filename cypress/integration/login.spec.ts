@@ -24,7 +24,7 @@ it('should log in user, display skeleton screen, and then display shuffle button
 });
 
 it('should log out user', () => {
-    const uid = 'EaEu8zAupdXJPWKtCcpKhGJP8Bi1';
+    const uid = 'PsRL0Nqd20fcPYDHrzsOV9yF9j62';
 
     cy.login(uid);
     cy.visit('http://localhost:3000/home');
