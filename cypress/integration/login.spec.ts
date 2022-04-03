@@ -19,4 +19,18 @@ it('should log in user, display skeleton screen, and then display shuffle button
     cy.get('[data-testid="skeleton-screen"]').should('be.visible');
 
     cy.contains(/shuffle/i);
+
+    cy.logout();
+});
+
+it('should log out user', () => {
+    const uid = 'EaEu8zAupdXJPWKtCcpKhGJP8Bi1';
+
+    cy.login(uid);
+    cy.visit('http://localhost:3000/home');
+
+    cy.get('.menu-button').click();
+    cy.contains(/log out/i).click();
+
+    cy.contains(/mindright/i);
 });
