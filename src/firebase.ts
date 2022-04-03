@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, deleteDoc, doc, DocumentData, FieldPath, getDocs, getFirestore, orderBy, OrderByDirection, query, updateDoc, where } from 'firebase/firestore';
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: 'AIzaSyDVNc_hcsOwjf8SbHvbvgs9MdPd7ZVyftQ',
     authDomain: 'mind-right-d74a0.firebaseapp.com',
     projectId: 'mind-right-d74a0',
