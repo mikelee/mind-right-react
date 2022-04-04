@@ -19,16 +19,12 @@
 
 
 const admin = require('firebase-admin');
-const cypressFirebasePlugin = require('cypress-firebase').plugin;
+import { plugin as cypressFirebasePlugin } from "cypress-firebase";
 
-module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-
-
+module.exports = (
+  on: Cypress.PluginEvents,
+  config: Cypress.PluginConfigOptions
+) => {
   const extendedConfig = cypressFirebasePlugin(on, config, admin);
-
-  // Add other plugins/tasks such as code coverage here
-
   return extendedConfig;
-}
+};
