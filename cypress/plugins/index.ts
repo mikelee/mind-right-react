@@ -18,7 +18,7 @@
 // eslint-disable-next-line no-unused-vars
 
 
-const admin = require('firebase-admin');
+import admin from "firebase-admin";
 import { plugin as cypressFirebasePlugin } from "cypress-firebase";
 
 module.exports = (
