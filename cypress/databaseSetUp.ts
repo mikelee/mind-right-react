@@ -17,7 +17,7 @@ const categories = [
         collection: 'categories',
         data: {
             name: 'Category Two',
-            selected: true,
+            selected: false,
             userId: uid
         }
     },
