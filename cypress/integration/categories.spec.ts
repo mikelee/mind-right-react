@@ -20,3 +20,25 @@ it('should check first category', () => {
     cy.get(':nth-child(1) > [data-testid="checkbox"]').realClick();
     cy.get(':nth-child(1) > [data-testid="checkbox"]').should('have.class', 'checked');
 });
+
+it('should edit first category name', () => {
+    cy.get('.menu-button').click();
+    cy.get('.menu-item--categories').realHover();
+    
+    cy.contains(/edit/i).realClick();
+
+    cy.get(':nth-child(1) > input').then(input => {
+        const text = (input[0] as HTMLInputElement).value;
+
+        cy.get(':nth-child(1) > input').focus();
+
+        cy.realType(' changed');
+    
+        // click 'Save'
+        cy.get('button').realClick();
+            
+        cy.contains(/select/i).realClick();
+
+        cy.contains(`${text} changed`);
+    });
+});
