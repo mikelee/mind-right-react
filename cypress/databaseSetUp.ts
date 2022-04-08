@@ -79,6 +79,12 @@ export const populateTestData = () => {
     });    
 }
 
+export const populateTestDataNoThoughts = () => {
+    categories.forEach(data => {
+        cy.callFirestore('set', `${data.collection}/${data.id}`, data.data);
+    });    
+}
+
 export const deleteTestData = () => {
     // delete every category with test uid
     cy.callFirestore('delete', 'categories', { where: ['userId', '==', uid] });
