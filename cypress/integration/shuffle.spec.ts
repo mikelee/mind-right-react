@@ -1,5 +1,11 @@
+import { deleteTestData, populateTestData } from '../databaseSetUp';
+
 beforeEach(() => {
     const uid = 'PsRL0Nqd20fcPYDHrzsOV9yF9j62';
+
+    deleteTestData();
+    populateTestData();
+
     cy.login(uid);
     cy.visit('http://localhost:3000/home');
 });
