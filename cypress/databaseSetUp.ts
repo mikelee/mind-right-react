@@ -2,7 +2,7 @@ import { Timestamp } from 'firebase/firestore';
 
 const uid = 'PsRL0Nqd20fcPYDHrzsOV9yF9j62';
 
-const categories = [
+export const categories = [
     {
         id: 'testCategoryId1',
         collection: 'categories',
@@ -32,7 +32,7 @@ const categories = [
     }
 ];
 
-const thoughts = [
+export const thoughts = [
     {
         id: 'testThoughtId1',
         collection: 'thoughts',
