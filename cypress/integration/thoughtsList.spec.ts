@@ -10,6 +10,10 @@ beforeEach(() => {
     cy.visit('http://localhost:3000/home/thoughts');
 });
 
+afterEach(() => {
+    cy.logout();
+})
+
 it('should display all thoughts in descending order by timestamp', () => {
     // sort thoughts by timestamp in descending order (newest first)
     const thoughtsArray = thoughts.map(thought => thought.data);
@@ -21,4 +25,16 @@ it('should display all thoughts in descending order by timestamp', () => {
     for (let i = 0; i < alphabeticalThoughts.length; i++) {
         cy.get(`:nth-child(${i + 2}) > form > .text > .thought-item-input`).should('have.value', alphabeticalThoughts[i].text);
     }
+});
+
+it('should add a new thought at the top of thoughts list', () => {
+    cy.contains('button', /add/i).realClick();
+
+    cy.get(`:nth-child(${2}) > form > .text > .thought-item-input`).should('have.value', '');
+    cy.get(`:nth-child(${2}) > form > .text > .thought-item-input`).type('New Thought');
+    
+    // to save text input since the save function is onBlur 
+    cy.get('.thoughts-list').realClick();
+
+    cy.get(`:nth-child(${2}) > form > .text > .thought-item-input`).should('have.value', 'New Thought');
 });
