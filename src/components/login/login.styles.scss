@@ -49,4 +49,16 @@
             margin-top: 2rem;
         }
     }
+
+    .error-message {
+        position: absolute;
+        bottom: 10%;
+        width: 50%;
+        background-color: rgba(#ff5454, .7);
+        color: white;
+        text-align: center;
+        font-size: 1.6rem;
+        padding: 2rem;
+        border-radius: .5rem;
+    }
 }

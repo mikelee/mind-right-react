@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { addNewUser, auth } from '../../firebase';
@@ -14,6 +14,8 @@ interface Props {
 const Login: React.FC<Props> = ({ type }) => {
 
     let navigate = useNavigate();
+    
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const signUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -42,7 +44,12 @@ const Login: React.FC<Props> = ({ type }) => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            
+            setErrorMessage(errorCode);
+
+            setTimeout(() => {
+                setErrorMessage(null);
+            }, 5000);
           });
     }
 
@@ -61,7 +68,12 @@ const Login: React.FC<Props> = ({ type }) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+
+            setErrorMessage(errorCode);
+
+            setTimeout(() => {
+                setErrorMessage(null);
+            }, 5000);
         });
     }
     
@@ -78,6 +90,11 @@ const Login: React.FC<Props> = ({ type }) => {
                 <input name='password' type='password' placeholder='password' required />
                 <Button text={type === 'sign-up' ? 'Sign Up' : 'Sign In'} type='submit' />
             </form>
+            {
+                errorMessage
+                ? <p className='error-message'>{errorMessage}</p>
+                : null
+            }
         </div>
 )};
 
