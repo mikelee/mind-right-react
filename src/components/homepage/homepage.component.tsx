@@ -5,7 +5,11 @@ import './homepage.styles.scss';
 import Button from '../button/button.component';
 import Login from '../login/login.component';
 
-const Homepage: React.FC = () => {
+interface Props {
+    loggedOut?: boolean
+}
+
+const Homepage: React.FC<Props> = ({ loggedOut }) => {
 
     const [loginType, setloginType] = useState<string | null>(null);
 
@@ -26,6 +30,11 @@ const Homepage: React.FC = () => {
                 <Button text='Sign Up' onClick={e => toggleLogin(e)} name='sign-up' dataTestId='sign-up-button' />
                 <Button text='Sign In' onClick={e => toggleLogin(e)} name='sign-in' dataTestId='sign-in-button' />
             </div>
+            {
+                loggedOut
+                ? <p className='logged-out-message'>You have successfully logged out</p>
+                : null
+            }
 
             <div className='tile tile-center'></div>
             <div className='tile tile-top-left'></div>
