@@ -40,6 +40,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Homepage />} />
+					<Route path='/logged-out' element={<Homepage loggedOut={true} />} />
 					<Route path='/home/*' element={<DataLoader user={user} />} />
 				</Routes>
 			</BrowserRouter>
