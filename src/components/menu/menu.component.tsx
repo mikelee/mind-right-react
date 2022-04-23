@@ -33,8 +33,7 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
     const logout = () => {
         signOut(auth)
         .then(() => {
-            console.log('logged out')
-            navigate('/');
+            navigate('/logged-out');
         }).catch((error) => {
             console.log(error)
         });
