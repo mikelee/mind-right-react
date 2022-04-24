@@ -93,12 +93,12 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
                 </div>
             </form>
             <div className='thought-categories'>
-                <Button className='thought-categories-add-button' text='Add' onClick={() => displayAddableCategories()} />
                 <div className='thought-categories-list'>
                     {
                         thoughtCategories?.map((thoughtCategory) => <p className='thought-category' key={thoughtCategory.id} onClick={() => deleteCategory(thoughtCategory.id)} >{thoughtCategory.name}</p>)
                     }
                 </div>
+                <Button className='thought-categories-add-button' text='Add' onClick={() => displayAddableCategories()} />
             </div>
             {
                 addableCategories !== null
