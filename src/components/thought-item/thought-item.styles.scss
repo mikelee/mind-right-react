@@ -65,10 +65,15 @@
         margin-top: 2rem;
 
         &-list {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 50%;
             font-size: 1.4rem;
             text-shadow: 0 0 .5rem white, 0 0 .5rem white, 0 0 .5rem white;
 
             .thought-category {
+                margin: 1rem;
                 cursor: pointer;
                 transition: all .3s;
 
