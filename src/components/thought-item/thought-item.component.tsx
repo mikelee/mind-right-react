@@ -133,6 +133,7 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
             <button className='delete-button' onClick={(e) => deleteThought(e, id)}>
                 <DeleteIcon className='delete-icon' />
             </button>
+            <div className='addable-categories-curtain'></div>
         </div>
 )};
 

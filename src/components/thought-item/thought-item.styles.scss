@@ -16,18 +16,6 @@
     box-sizing: border-box;
     position: relative;
 
-    &::after {
-        content: '';
-        background-color: white;
-        height: 110%;
-        // 15% / 70% = 21.429% (after width's percentage of screen width / thought item width)
-        width: 21.429%;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        z-index: 9999;
-    }
-
     form {
         display: flex;
         flex-direction: column;
@@ -137,6 +125,49 @@
         .done-button {
             align-self: center;
             margin-top: 2rem;
+        }
+    }
+
+    .addable-categories-curtain {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        // height is greater than 100% to hide the addable-categories 'done' button's box-shadow if it was being hovered
+        height: 110%;
+        // 15% / 70% = 21.429% (after width's percentage of screen width / thought item width)
+        width: 21.429%;
+        z-index: 9999;
+        background-color: white;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1rem;
+            z-index: 9999;
+            height: 2rem;
+            width: 1rem;
+            background-color: transparent;
+            border-radius: 0 .5rem 0 0;
+            box-shadow: .5rem 0rem 0 white;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            /*
+                10% of 110% = 9.09%
+                Since addable-categories-curtain is 10% greater than thought-item,
+                and we need the bottom of thought-item, not addable-categories-curtain
+            */
+            bottom: calc(9.09%);
+            left: -1rem;
+            z-index: 9999;
+            height: 2rem;
+            width: 1rem;
+            background-color: transparent;
+            border-radius: 0 0 .5rem 0;
+            box-shadow: .5rem 0rem 0 white;
         }
     }
 }
