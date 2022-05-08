@@ -24,6 +24,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
     const [thoughtsFilterVisible, setThoughtsFilterVisible] = useState(false);
     const [filteredThoughts, setFilteredThoughts] = useState<Thought[] | null>([]);
     const [filterCategories, setFilterCategories] = useState<Category[]>([]);
+    const [containsAll, setContainsAll] = useState(false);
 
     useEffect(() => {
         // set intital filterCategories
@@ -32,7 +33,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
 
     useEffect(() => {
         updateFilteredThoughts(filterCategories);
-    }, [filterCategories]);
+    }, [filterCategories, containsAll]);
 
     const createThoughtCategories = (categories: Category[]) => {
         // Set all the filtereCategories selected to false
@@ -59,16 +60,33 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
             return;
         }
 
-        // put all thoughts that have a category that is in the selectedCategories array in the updatedThoughts array
-        const updatedThoughts = thoughts?.filter(thought => {
-            let isTrue= false;
+        let updatedThoughts;
 
-            thought.categories.forEach(category => {
-                if (selectedCategories?.includes(category.id)) isTrue = true;
+        // By default, shows thoughts that have at least one of the selected categories in it's thoughtCategories
+        // containsAll = true, shows thoughts that have every one of the selected categories in it's thoughtCategories
+        if (containsAll) {
+            // put all thoughts that have every category that is in the selectedCategories array in the updatedThoughts array
+            updatedThoughts = thoughts?.filter(thought => {
+                let isTrue = true;
+
+                selectedCategories.forEach(selectedCategory => {
+                    if (!thought.categories.some(thoughtCategory => thoughtCategory.id === selectedCategory)) isTrue = false;
+                });
+
+                return isTrue;
             });
+        } else {
+            // put all thoughts that have at least one category that is in the selectedCategories array in the updatedThoughts array
+            updatedThoughts = thoughts?.filter(thought => {
+                let isTrue = false;
 
-            return isTrue;
-        });
+                thought.categories.forEach(category => {
+                    if (selectedCategories?.includes(category.id)) isTrue = true;
+                });
+
+                return isTrue;
+            });
+        }
 
         if (updatedThoughts) setFilteredThoughts(updatedThoughts);
     }
@@ -95,7 +113,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
             </div>
             {
                 thoughtsFilterVisible
-                ? <ThoughtsFilter categories={filterCategories} setFilterCategories={setFilterCategories}/>
+                ? <ThoughtsFilter categories={filterCategories} containsAll={containsAll} setContainsAll={setContainsAll} setFilterCategories={setFilterCategories}/>
                 : null
             }
             {
