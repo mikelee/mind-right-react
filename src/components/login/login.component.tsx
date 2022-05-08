@@ -44,9 +44,11 @@ const Login: React.FC<Props> = ({ type }) => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            
-            setErrorMessage(errorCode);
 
+            const errorText = convertErrorMessage(errorCode);
+
+            setErrorMessage(errorText);
+            
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
@@ -69,12 +71,31 @@ const Login: React.FC<Props> = ({ type }) => {
             const errorCode = error.code;
             const errorMessage = error.message;
 
-            setErrorMessage(errorCode);
+            const errorText = convertErrorMessage(errorCode);
+
+            setErrorMessage(errorText);
 
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
         });
+    }
+
+    const convertErrorMessage = (errorCode: string) => {
+        switch (errorCode) {
+            case 'auth/user-not-found':
+                return 'This email isn\'t associated with an account';
+            case 'auth/email-already-in-use':
+                return 'This email is already in use';
+            case 'auth/invalid-email':
+                return 'Invalid email';
+            case 'auth/wrong-password':
+                return 'Incorrect email or password';
+            case 'auth/weak-password':
+                return 'Password must be at least 6 characters';
+            default:
+                return errorCode;
+        }
     }
     
     return (
