@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { deleteDocument, updateDocument } from '../../firebase';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './thought-item.styles.scss';
 
@@ -100,27 +101,35 @@ const ThoughtItem: React.FC<Props> = ({ categories, thoughtCategories, text, ima
                 </div>
                 <Button className='thought-categories-add-button' text='Add' onClick={() => displayAddableCategories()} />
             </div>
-            {
-                addableCategories !== null
-                ?
-                    <div className='addable-categories'>
-                        <div className='addable-categories-list'>
-                            {
-                                addableCategories?.length === 0
-                                ? <p className='no-addable-categories'>No categories to add</p>
-                                :
-                                    addableCategories?.map(addableCategory =>
-                                        <div className='addable-category' key={addableCategory.id}>
-                                            <Checkbox checked={false} onClick={() => addCategory(addableCategory)} />
-                                            <p>{addableCategory.name}</p>
-                                        </div>
-                                    )
-                            }
-                        </div>
-                        <Button className='done-button' text='Done' onClick={() => setAddableCategories(null)} />
-                    </div>
-                : null
-            }
+            <TransitionGroup className='slide-in'>
+                {
+                    addableCategories !== null
+                    ?
+                            <CSSTransition
+                                classNames='slide-in'
+                                timeout={500}
+                            >
+                                <div className='addable-categories'>
+                                    <div className='addable-categories-list'>
+                                        {
+                                            addableCategories?.length === 0
+                                            ? <p className='no-addable-categories'>No categories to add</p>
+                                            :
+                                                addableCategories?.map(addableCategory =>
+                                                    <div className='addable-category' key={addableCategory.id}>
+                                                        <Checkbox checked={false} onClick={() => addCategory(addableCategory)} />
+                                                        <p>{addableCategory.name}</p>
+                                                    </div>
+                                                )
+                                        }
+                                    </div>
+                                    <Button className='done-button' text='Done' onClick={() => setAddableCategories(null)} />
+                                </div>
+                            </CSSTransition>
+
+                    : null
+                }
+            </TransitionGroup>
             <button className='delete-button' onClick={(e) => deleteThought(e, id)}>
                 <DeleteIcon className='delete-icon' />
             </button>
