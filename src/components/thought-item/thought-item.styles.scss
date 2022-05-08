@@ -12,9 +12,21 @@
     padding: 2rem 3rem;
     margin: 3rem 0;
     border-radius: .5rem;
-    box-shadow: 0rem 1rem 1rem rgba(black, .2);
+    box-shadow: -1rem 1rem 1rem rgba(black, .2);
     box-sizing: border-box;
     position: relative;
+
+    &::after {
+        content: '';
+        background-color: white;
+        height: 110%;
+        // 15% / 70% = 21.429% (after width's percentage of screen width / thought item width)
+        width: 21.429%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 9999;
+    }
 
     form {
         display: flex;
@@ -101,7 +113,7 @@
         border: 2px solid $color-mint-dark;
         border-left: 0;
         border-radius: 0 .5rem .5rem 0;
-        box-shadow: -1rem 0 1rem rgba(black, .3);
+        box-shadow: -2rem 0rem 1rem -1rem rgba(black, .3);
 
         .addable-categories-list {
             display: flex;
