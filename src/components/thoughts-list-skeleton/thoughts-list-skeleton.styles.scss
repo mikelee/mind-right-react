@@ -1,0 +1,70 @@
+.thoughts-list-skeleton {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    .nav-area {
+        height: 8rem;
+        width: 100%;
+
+        .menu-block {
+            position: absolute;
+            top: 2.7rem;
+            left: 3.3rem;
+            height: 3rem;
+            width: 5.5rem;
+            background-color: #EEEEEE;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+
+        & > * {
+            height: 5rem;
+            width: 20rem;
+            background-color: #EEEEEE;
+            border-radius: 10rem;
+        }
+    }
+
+    .thought-item-block {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        background-color: #FAFAFA;
+        margin: 3rem 0;
+        padding: 2rem 3rem;
+        border-radius: .5rem;
+        box-shadow: -1rem 1rem 1rem rgba(black, .2);
+        box-sizing: border-box;
+
+        .label-placeholder {
+            height: 5rem;
+            width: 100%;
+        }
+
+        .text-block {
+            height: 3.6rem;
+            width: 100%;
+            background-color: #EEEEEE;
+            margin: 1rem 0;
+            border-radius: .5rem;
+        }
+
+        .add-categories-button-block {
+            align-self: flex-end;
+            height: 5rem;
+            width: 20rem;
+            background-color: #EEEEEE;
+            margin-top: 3rem;
+            border-radius: 10rem;
+        }
+    }
+}
