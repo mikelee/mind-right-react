@@ -5,8 +5,8 @@ import { getDocuments } from '../../firebase';
 import { Timestamp } from 'firebase/firestore';
 import { User } from '../../App'; 
 
-import RandomThoughtSkeleton from '../random-thought-skeleton/random-thought-skeleton.component';
-import ThoughtsListSkeleton from '../thoughts-list-skeleton/thoughts-list-skeleton.component';
+import RandomThoughtSkeleton from '../skeletons/random-thought-skeleton/random-thought-skeleton.component';
+import ThoughtsListSkeleton from '../skeletons/thoughts-list-skeleton/thoughts-list-skeleton.component';
 import UserPage from '../user-page/user-page.component';
 
 export interface Category {
