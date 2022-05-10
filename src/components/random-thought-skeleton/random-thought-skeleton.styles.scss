@@ -1,0 +1,48 @@
+.random-thought-skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    .nav-area {
+        height: 8rem;
+        width: 100%;
+
+        .menu-block {
+            position: absolute;
+            top: 2.7rem;
+            left: 3.3rem;
+            height: 3rem;
+            width: 5.5rem;
+            background-color: #EEEEEE;
+        }
+    }
+
+
+    .text-container {
+        width: 80%;
+        height: 70%;
+
+        & > * {
+            height: 4rem;
+            background-color: #EEEEEE;
+            margin-top: 4rem;
+            border-radius: .2rem;
+
+            &:last-child {
+                width: 70%;
+            }
+        }
+    }
+
+    .shuffle-button-block {
+        position: absolute;
+        bottom: 5%;
+        height: 5rem;
+        width: 20rem;
+        background-color: #EEEEEE;
+        border-radius: 10rem;
+    }
+}

@@ -4,8 +4,9 @@ import { getDocuments } from '../../firebase';
 import { Timestamp } from 'firebase/firestore';
 import { User } from '../../App'; 
 
-import SkeletonScreen from '../skeleton-screen/skeleton-screen.component';
 import UserPage from '../user-page/user-page.component';
+
+import RandomThoughtSkeleton from '../random-thought-skeleton/random-thought-skeleton.component';
 
 export interface Category {
     id: string,
@@ -84,7 +85,7 @@ const DataLoader: React.FC<Props> = ({ user }) => {
                 dataLoaded ?
                     <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} getCategories={getCategories} />
                 :
-                    <SkeletonScreen />
+                    <RandomThoughtSkeleton />
             }
         </div>
     );
