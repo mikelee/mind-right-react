@@ -18,6 +18,7 @@ const ThoughtsListSkeleton = () => (
             <div className='text-block'></div>
             <div className='add-categories-button-block'></div>
         </div>
+        <div className='pulse'></div>
     </div>
 );
 

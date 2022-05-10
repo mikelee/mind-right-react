@@ -13,6 +13,7 @@ const RandomThoughtSkeleton = () => (
             <div className='text-block-3'></div>
         </div>
         <div className='shuffle-button-block'></div>
+        <div className='pulse'></div>
     </div>
 );
 

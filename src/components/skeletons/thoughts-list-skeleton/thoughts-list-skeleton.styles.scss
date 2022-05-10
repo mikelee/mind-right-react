@@ -67,4 +67,25 @@
             border-radius: 10rem;
         }
     }
+
+    .pulse {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        animation: pulse 1s linear alternate;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: .9;
+    }
 }
