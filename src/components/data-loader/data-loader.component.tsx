@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { getDocuments } from '../../firebase';
 
 import { Timestamp } from 'firebase/firestore';
 import { User } from '../../App'; 
 
-import UserPage from '../user-page/user-page.component';
-
 import RandomThoughtSkeleton from '../random-thought-skeleton/random-thought-skeleton.component';
+import ThoughtsListSkeleton from '../thoughts-list-skeleton/thoughts-list-skeleton.component';
+import UserPage from '../user-page/user-page.component';
 
 export interface Category {
     id: string,
@@ -33,6 +34,8 @@ interface Props {
 }
 
 const DataLoader: React.FC<Props> = ({ user }) => {
+
+    const location = useLocation();
 
     const [thoughts, setThoughts] = useState<Thought[] | null>(null);
     const [categories, setCategories] = useState<Category[] | null>(null);
@@ -85,7 +88,13 @@ const DataLoader: React.FC<Props> = ({ user }) => {
                 dataLoaded ?
                     <UserPage categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} getCategories={getCategories} />
                 :
-                    <RandomThoughtSkeleton />
+                    <>
+                        {
+                            location.pathname === '/home'
+                            ? <RandomThoughtSkeleton />
+                            : <ThoughtsListSkeleton />
+                        }
+                    </>
             }
         </div>
     );
