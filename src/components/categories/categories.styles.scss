@@ -32,46 +32,46 @@
             }
         }
     }
-    
+
     &-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        width: 100%;
+        gap: 2rem;
+        padding: 2rem;
 
         .category-item {
             display: flex;
             align-items: center;
-            margin: 1rem;
-
+            // .6rem = .5rem padding-bottom + .1rem border-bottom of categories-form-input (used to align select categories and edit categories text)
+            padding-bottom: .6rem;
+            
             .text{
                 margin: 0;
             }
         }
     }
-
+    
     #categories-form {
         display: grid;
+        gap: 2rem;
         grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-        justify-items: end;
-
+        padding: 2rem;
+        
         .categories-form-input {
             display: flex;
-            justify-content: center;
-            width: 100%;
-            min-height: 1.6rem;
-        }
-
-        input {
-            display: flex;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 1rem 0;
-            // margin-left = category-item left margin (1rem) + Checkbox width (1.6rem) + Checkbox margin-right (.5rem)
-            margin-left: 3.1rem;
-            border: none;
+            // 2.5rem = total width and margin of checkbox (used to align select categories and edit categories text)
+            margin-left: 2.5rem;
+            padding-bottom: .5rem;
             border-bottom: 1px solid $color-mint-dark;
-            box-sizing: border-box;
+            width: fit-content;
+            
+            & > input {
+                width: 100%;
+                font-size: 1.8rem;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
         }
     }
 
