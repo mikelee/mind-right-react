@@ -50,10 +50,10 @@ const RandomThought: React.FC<Props> = ({ thoughts, areUnselectedThoughts }) => 
     }
     
     return (
-        <div className='random-thought' ref={randomThoughtRef} >
+        <main className='random-thought' ref={randomThoughtRef} >
             <p className='text' data-testid='random-thought-text'>{text}</p>
             <Button className='shuffle-button' text='Shuffle' onClick={() => shuffleThought(thoughts)} />
-        </div>
+        </main>
     );
 };
 
