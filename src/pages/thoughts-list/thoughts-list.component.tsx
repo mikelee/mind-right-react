@@ -4,13 +4,13 @@ import { db } from '../../firebase';
 
 import './thoughts-list.styles.scss';
 
-import { Category } from '../data-loader/data-loader.component';
-import { Thought } from '../data-loader/data-loader.component';
+import { Category } from '../../components/data-loader/data-loader.component';
+import { Thought } from '../../components/data-loader/data-loader.component';
 import { User } from '../../App';
 
-import Button from '../button/button.component';
-import ThoughtItem from '../thought-item/thought-item.component';
-import ThoughtsFilter from '../thoughts-filter/thoughts-filter.component';
+import Button from '../../components/button/button.component';
+import ThoughtItem from '../../components/thought-item/thought-item.component';
+import ThoughtsFilter from '../../components/thoughts-filter/thoughts-filter.component';
 
 interface Props {
     categories: Category[] | null,

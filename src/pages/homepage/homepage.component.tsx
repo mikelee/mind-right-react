@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import './homepage.styles.scss';
 
-import Button from '../button/button.component';
-import Login from '../login/login.component';
+import Button from '../../components/button/button.component';
+import Login from '../../components/login/login.component';
 
 interface Props {
     loggedOut?: boolean

@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './random-thought.styles.scss';
 
-import { Thought } from '../data-loader/data-loader.component';
+import { Thought } from '../../components/data-loader/data-loader.component';
 
-import Button from '../button/button.component';
+import Button from '../../components/button/button.component';
 import beachImage from '../../assets/beach-image.jpeg';
 
 interface Props {

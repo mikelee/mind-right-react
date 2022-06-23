@@ -6,8 +6,8 @@ import './user-page.styles.scss';
 import { Category } from '../data-loader/data-loader.component';
 import { Thought } from '../data-loader/data-loader.component';
 
-import RandomThought from '../random-thought/random-thought.component';
-import ThoughtsList from '../thoughts-list/thoughts-list.component';
+import RandomThought from '../../pages/random-thought/random-thought.component';
+import ThoughtsList from '../../pages/thoughts-list/thoughts-list.component';
 import Nav from '../nav/nav.component';
 
 interface Props {
