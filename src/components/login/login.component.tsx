@@ -99,11 +99,11 @@ const Login: React.FC<Props> = ({ type }) => {
     }
     
     return (
-        <div className='login' data-testid='login-component'>
+        <section className='login' data-testid='login-component'>
             {
                 type === 'sign-up'
-                ? <p className='title' data-testid='sign-up-title'>Sign Up</p>
-                : <p className='title' data-testid='sign-in-title'>Sign In</p>
+                ? <h2 className='title' data-testid='sign-up-title'>Sign Up</h2>
+                : <h2 className='title' data-testid='sign-in-title'>Sign In</h2>
             }
 
             <form onSubmit={type === 'sign-up' ? signUp : signIn}>
@@ -116,7 +116,8 @@ const Login: React.FC<Props> = ({ type }) => {
                 ? <p className='error-message'>{errorMessage}</p>
                 : null
             }
-        </div>
-)};
+        </section>
+    );
+}
 
 export default Login;
