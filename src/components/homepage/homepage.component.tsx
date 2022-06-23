@@ -25,32 +25,32 @@ const Homepage: React.FC<Props> = ({ loggedOut }) => {
 
     return (
         <div className='homepage'>
-            <h1 className='name'>MindRight</h1>
-            <div className='buttons'>
-                <Button text='Sign Up' onClick={e => toggleLogin(e)} name='sign-up' dataTestId='sign-up-button' />
-                <Button text='Sign In' onClick={e => toggleLogin(e)} name='sign-in' dataTestId='sign-in-button' />
-            </div>
-            {
-                loggedOut
-                ? <p className='logged-out-message'>You have successfully logged out</p>
-                : null
-            }
-
+            <main>
+                <h1 className='name'>MindRight</h1>
+                <div className='buttons'>
+                    <Button text='Sign Up' onClick={e => toggleLogin(e)} name='sign-up' dataTestId='sign-up-button' />
+                    <Button text='Sign In' onClick={e => toggleLogin(e)} name='sign-in' dataTestId='sign-in-button' />
+                </div>
+                {
+                    loginType
+                    ? 
+                        <>
+                            <Login type={loginType}/>
+                            <div className='overlay' onClick={() => toggleLogin(null)} ></div>
+                        </>
+                    : null
+                }
+                {
+                    loggedOut
+                    ? <p className='logged-out-message'>You have successfully logged out</p>
+                    : null
+                }
+            </main>
             <div className='tile tile-center'></div>
             <div className='tile tile-top-left'></div>
             <div className='tile tile-top-middle'></div>
             <div className='tile tile-bottom-left'></div>
             <div className='tile tile-bottom-right'></div>
-
-            {
-                loginType
-                ? 
-                    <>
-                        <Login type={loginType}/>
-                        <div className='overlay' onClick={() => toggleLogin(null)} ></div>
-                    </>
-                : null
-            }
         </div>
     );
 };

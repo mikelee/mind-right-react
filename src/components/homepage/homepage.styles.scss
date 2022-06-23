@@ -1,36 +1,48 @@
 @import '../../variables';
 
 .homepage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     height: 100vh;
     width: 100vw;
     background-image: url('../../assets/mind-right-background.svg');
     background-size: cover;
 
-    .name {
-        color: $color-black;
-        font-size: 10rem;
-        margin: 0;
-        padding-top: calc(30vh + 2rem);
-        width: fit-content;
-    }
-
-    .buttons {
+    main {
         display: flex;
-        justify-content: center;
-        margin: 8rem;
+        flex-direction: column;
+        align-items: center;
 
-        & > button {
-            margin: 0 3rem;
+        .name {
+            color: $color-black;
+            font-size: 10rem;
+            margin: 0;
+            padding-top: calc(30vh + 2rem);
+            width: fit-content;
         }
-    }
+    
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin: 8rem;
+    
+            & > button {
+                margin: 0 3rem;
+            }
+        }
 
-    .logged-out-message {
-        font-size: 2.4rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid $color-mint-dark;
+        .logged-out-message {
+            font-size: 2.4rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid $color-mint-dark;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba($color: black, $alpha: .5);
+        }
     }
 
     .tile {
@@ -76,14 +88,5 @@
             width: 15%;
             box-shadow: 1rem -1rem 1rem rgba(black, .2);
         }
-    }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background-color: rgba($color: black, $alpha: .5);
     }
 }
