@@ -6,7 +6,7 @@ import { auth } from './firebase';
 import './App.scss';
 
 import DataLoader from './components/data-loader/data-loader.component';
-import Homepage from './components/homepage/homepage.component';
+import Homepage from './pages/homepage/homepage.component';
 
 export interface User {
 	email: string | null,
