@@ -8,7 +8,7 @@ import { Thought } from '../data-loader/data-loader.component';
 
 import RandomThought from '../../pages/random-thought/random-thought.component';
 import ThoughtsList from '../../pages/thoughts-list/thoughts-list.component';
-import Nav from '../nav/nav.component';
+import MenuBar from '../menu-bar/menu-bar.component';
 
 interface Props {
     categories: Category[] | null, 
@@ -68,7 +68,7 @@ const UserPage: React.FC<Props> = ({ categories, thoughts, user, getUserData, ge
     
     return (
         <div className='user-page' data-testid='user-page'>
-            <Nav categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />
+            <MenuBar categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />
             <Routes>
                 <Route path='/' element={<RandomThought thoughts={selectedThoughts} areUnselectedThoughts={areUnselectedThoughts} />} />
                 <Route path='/thoughts' element={<ThoughtsList categories={categories} thoughts={thoughts} user={user} getUserData={getUserData} />} />

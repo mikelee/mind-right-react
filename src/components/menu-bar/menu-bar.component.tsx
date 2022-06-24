@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './nav.styles.scss';
+import './menu-bar.styles.scss';
 
 import { Category, Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
@@ -16,7 +16,7 @@ interface Props {
     getUserData: (uid: string) => Promise<any>
 }
 
-const Nav: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUserData }) => {
+const MenuBar: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUserData }) => {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
@@ -25,7 +25,7 @@ const Nav: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUs
     }
 
     return (
-        <div className='nav'>
+        <div className='menu-bar'>
             {
                 menuVisible
                 ? <Menu categories={categories} thoughts={thoughts} user={user} toggleMenu={toggleMenu} getCategories={getCategories} getUserData={getUserData} />
@@ -38,4 +38,4 @@ const Nav: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUs
     );
 }
 
-export default Nav;
+export default MenuBar;
