@@ -8,6 +8,26 @@
     border: 2px solid $color-mint-dark;
     border-radius: .5rem;
 
+    ul {
+        margin: 0;
+        padding: 0;
+        border-radius: .2rem;
+        list-style: none;
+
+        li {
+                        
+            &:first-child {
+                border-radius: .2rem .2rem 0 0;
+            }
+            
+            &:last-child {
+                border-radius: 0 0 .2rem .2rem;
+                border-bottom: none;
+            }
+        }
+
+    }
+
     .menu-item {
         display: flex;
         justify-content: center;
@@ -30,15 +50,6 @@
 
         &:visited {
             color: black;
-        }
-
-        &:first-child {
-            border-radius: .2rem .2rem 0 0;
-        }
-
-        &:last-child {
-            border-radius: 0 0 .2rem .2rem;
-            border-bottom: none;
         }
 
         &--categories {

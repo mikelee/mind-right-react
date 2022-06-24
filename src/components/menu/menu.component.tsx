@@ -40,19 +40,25 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
     }
 
     return (
-        <div className='menu'>
-            <Link to='/home' className='menu-item' onClick={toggleMenu}>Home</Link>
-            <Link to='/home/thoughts' className='menu-item' onClick={toggleMenu}>Thoughts</Link>
-            <div className='menu-item menu-item--categories' onMouseEnter={toggleCategories} onMouseLeave={toggleCategories} >
-                Categories
-                {
-                    categoriesVisible
-                    ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
-                    : null
-                }
-            </div>
-            <div className='menu-item' onClick={logout}>Log Out</div>
-        </div>
+        <nav className='menu'>
+            <ul>
+                <li>
+                    <Link to='/home' className='menu-item' onClick={toggleMenu}>Home</Link>
+                </li>
+                <li>
+                    <Link to='/home/thoughts' className='menu-item' onClick={toggleMenu}>Thoughts</Link>
+                </li>
+                <li className='menu-item menu-item--categories' onMouseEnter={toggleCategories} onMouseLeave={toggleCategories} >
+                    Categories
+                    {
+                        categoriesVisible
+                        ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
+                        : null
+                    }
+                </li>
+                <li className='menu-item' onClick={logout}>Log Out</li>
+            </ul>
+        </nav>
     );
 };
 
