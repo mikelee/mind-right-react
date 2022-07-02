@@ -90,3 +90,42 @@
         }
     }
 }
+
+@media screen and (max-width: 720px) {
+    .homepage {
+
+        main {
+
+            .name {
+                padding-top: calc(25vh + 2rem);
+                font-size: 6rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                margin: 3rem 0;
+    
+                & > button {
+                    margin: 2rem 0;
+                }
+            }
+        }
+
+        
+        .tile {
+            
+            &-center {
+                left: 0%;
+                width: 100%;
+            }
+            
+            &-top-left {
+                display: none;
+            }
+            
+            &-bottom-right {
+                display: none;
+            }
+        }
+    }
+}
