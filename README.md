@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+# MindRight
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### _Focus on what's important_
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+MindRight helps you focus on what's important to you. Create a list of positive thoughts, and organize them into categories. Just click shuffle to display a random thought to remind yourself of the positives.
 
-### `npm start`
+## Features
+- Create, edit, and delete different thoughts
+- Create, edit, and delete different categories for your thoughts
+- Add and remove thoughts from different categories
+- Add image urls to your thoughts to add a background to the thought's quote when shuffled
+- Filter thoughts based on their categories
+- Shuffle thoughts based on the selected categories
+- Create an account and sign in
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech
+- [TypeScript]
+- [React]
+- [SASS]
+- [Firebase]
+- [Cypress]
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Cypress]: <https://www.cypress.io/>
+[Firebase]: <https://firebase.google.com/>
+[React]: <https://reactjs.org/>
+[SASS]: <https://sass-lang.com/>
+[TypeScript]: <https://www.typescriptlang.org/>
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone repo ``` git clone https://github.com/mikelee/mind-right-react.git ```
 
-### `npm run build`
+2. Go to root of project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install packages ``` npm i ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start app ```npm start ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How To Use
 
-### `npm run eject`
+### Sign In
+- Navigate to /
+- Click "Sign Up" or "Sign In"
+- Enter credentials
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Create Thoughts
+- Click on the menu on the top left
+- Click "Thoughts"
+- Click "Add" on the top left to create a blank thought
+- Click on the text input to add text
+- Click on the image input to add an image url for the thought's background
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Delete Thoughts
+- Go to a thought you want to delete
+- Hover over the thought and click the X button on the top right of the thought
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Filter Thoughts
+- Click on the menu on the top left
+- Click "Thoughts"
+- Click "Filter"
+- Select which categories should be displayed. Thoughts that contain at least one selected category will be displayed
+- Select "Contains all" to only show thoughts that contain all of the selected categories
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Create Categories
+- Click on the menu button on the top left
+- Hover over "Categories"
+- Click "Add"
+- Type a name for the category
+- Click "Submit"
 
-## Learn More
+### Edit Category Names
+- Click on the menu button on the top left
+- Hover over "Categories"
+- Click "Edit"
+- Change the name of the categories that you want
+- Click "Save"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Delete Categories
+- Click on the menu button on the top left
+- Hover over "Categories"
+- Double click on a category's name. This will bring up the option to confirm your choice or cancel
+- Click "Delete"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Add Categories To A Thought
+- Click on the menu on the top left
+- Click "Thoughts"
+- Go to a thought you want to add categories to
+- Click "Add" on the bottom right of the thought
+- Select the categories you want to add. Only the unselected categories are shown
+- Click "Save"
+
+### Delete Categories From A Thought
+- Click on the menu on the top left
+- Click "Thoughts"
+- Go to a thought you want to delete categories from
+- The categories that are assigned to the thought are displayed on the bottom left
+- Click on a category to delete it from the thought
+
+### Toggle Which Thought Categories Are Used When Shuffling Thoughts
+- Click on the menu button on the top left
+- Hover over "Categories"
+- Select which categories you want to be used
+
+### Log Out
+- Click on the menu on the top left
+- Click "Log Out"
+- You will be displayed with a page that says you have successfully logged out
