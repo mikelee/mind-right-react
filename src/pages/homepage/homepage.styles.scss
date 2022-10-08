@@ -101,9 +101,7 @@
     .homepage {
 
         main {
-            top: 20%;
             left: 0;
-            height: 60%;
             width: 100%;
 
             .name {
@@ -131,21 +129,10 @@
             &-center {
                 left: 0%;
                 width: 100%;
-                top: 20%;
-                height: 60%;
             }
             
             &-top-left {
                 display: none;
-            }
-
-            &-top-middle {
-                height: 20%;
-            }
-
-            &-bottom-left {
-                top: 80%;
-                height: 20%;
             }
             
             &-bottom-right {
