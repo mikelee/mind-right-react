@@ -4,14 +4,16 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import { addNewUser, auth } from '../../firebase';
 
 import './login.styles.scss';
+import {ReactComponent as CloseIcon} from '../../assets/delete.svg';
 
 import Button from '../button/button.component';
 
 interface Props {
-    type: string | null
+    type: string | null,
+    toggleLogin: (e: React.MouseEvent<HTMLButtonElement> | null) => void
 }
 
-const Login: React.FC<Props> = ({ type }) => {
+const Login: React.FC<Props> = ({ type, toggleLogin }) => {
 
     let navigate = useNavigate();
     
@@ -116,6 +118,9 @@ const Login: React.FC<Props> = ({ type }) => {
                 ? <p className='error-message'>{errorMessage}</p>
                 : null
             }
+            <button className='close' onClick={() => toggleLogin(null)}>
+                <CloseIcon className='close-icon' />
+            </button>
         </section>
     );
 }

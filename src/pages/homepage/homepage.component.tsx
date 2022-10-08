@@ -35,7 +35,7 @@ const Homepage: React.FC<Props> = ({ loggedOut }) => {
                     loginType
                     ? 
                         <>
-                            <Login type={loginType}/>
+                            <Login type={loginType} toggleLogin={toggleLogin}/>
                             <div className='overlay' onClick={() => toggleLogin(null)} ></div>
                         </>
                     : null

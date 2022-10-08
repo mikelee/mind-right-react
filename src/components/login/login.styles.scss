@@ -59,6 +59,20 @@
         padding: 2rem;
         border-radius: .5rem;
     }
+
+    .close {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: none;
+        border: none;
+
+        &-icon {
+            width: 3rem;
+            height: 3rem;
+            padding: 2rem;
+        }
+    }
 }
 
 @media screen and (max-width: 720px) {
