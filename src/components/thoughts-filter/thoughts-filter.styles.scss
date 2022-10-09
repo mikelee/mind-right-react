@@ -36,3 +36,22 @@
         font-size: 1.6rem;
     }
 }
+
+@media screen and (max-width: 700px) {
+    .thoughts-filter {
+
+        .categories {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .thoughts-filter {
+        padding: 1rem;
+
+        .categories {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
