@@ -191,3 +191,72 @@
         transition: all .5s ease-in;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .thought-item {
+
+        .addable-categories-curtain {
+            // 10% / 80% = 21.429% (after width's percentage of screen width / thought item width)
+            width: 12.5%;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .thought-item {
+        padding: 2rem;
+
+        .addable-categories {
+            align-items: center;
+            width: 80%;
+            border: 2px solid $color-mint-dark;
+            border-radius: .5rem;
+        }
+
+        .addable-categories-curtain {
+            // 5% / 90% = 21.429% (after width's percentage of screen width / thought item width)
+            width: 5.556%;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .thought-item {
+        padding: 1rem;
+
+        input {
+            width: 50%;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .delete-button {
+            visibility: visible;
+        }
+
+        .thought-categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-list {
+                align-self: flex-start;
+            }
+
+            &-add-button {
+                margin: 2rem 0;
+            }
+        }
+
+        .addable-categories {
+            width: 100%;
+            border: 2px solid $color-mint-dark;
+            border-radius: .5rem;
+        }
+
+        .addable-categories-curtain {
+            // 5% / 90% = 21.429% (after width's percentage of screen width / thought item width)
+            width: 5.556%;
+        }
+    }
+}
