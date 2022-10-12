@@ -136,7 +136,7 @@
         height: 110%;
         // 15% / 70% = 21.429% (after width's percentage of screen width / thought item width)
         width: 21.429%;
-        z-index: 9999;
+        z-index: 99;
         background-color: white;
 
         &::before {
@@ -144,7 +144,7 @@
             position: absolute;
             top: 0;
             left: -1rem;
-            z-index: 9999;
+            z-index: 99;
             height: 2rem;
             width: 1rem;
             background-color: transparent;
@@ -162,7 +162,7 @@
             */
             bottom: calc(9.09%);
             left: -1rem;
-            z-index: 9999;
+            z-index: 99;
             height: 2rem;
             width: 1rem;
             background-color: transparent;
