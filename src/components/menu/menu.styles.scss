@@ -56,4 +56,65 @@
             position: relative;
         }
     }
+
+    .close-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to bottom right, $color-mint, $color-mint-dark);
+        border: none;
+        box-sizing: border-box;
+
+        ul {
+    
+            li {
+                margin: 4rem 0;
+            }
+        }
+        
+        .menu-item {
+            font-size: 4rem;
+            font-weight: 600;
+            color: white;
+            border: none;
+            background: none;
+
+            &:hover {
+                background-color: transparent;
+                color: white;
+            }
+
+            &:visited {
+                color: white;
+            }
+        }
+
+        .close-button {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+
+            &-icon {
+                width: 3rem;
+                height: 3rem;
+                padding: 2rem;
+                fill: white;
+            }
+        }
+    }
 }

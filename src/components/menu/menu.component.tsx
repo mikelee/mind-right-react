@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 import './menu.styles.scss';
+import {ReactComponent as CloseIcon} from '../../assets/delete.svg';
 
 import { Category, Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
@@ -58,6 +59,9 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 </li>
                 <li className='menu-item' onClick={logout}>Log Out</li>
             </ul>
+            <button className='close-button' onClick={toggleMenu}>
+                    <CloseIcon className='close-button-icon' />
+            </button>
         </nav>
     );
 };
