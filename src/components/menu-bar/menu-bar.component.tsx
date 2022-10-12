@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './menu-bar.styles.scss';
 
@@ -19,6 +19,12 @@ interface Props {
 const MenuBar: React.FC<Props> = ({ categories, thoughts, user, getCategories, getUserData }) => {
 
     const [menuVisible, setMenuVisible] = useState(false);
+
+    useEffect(() => {
+        menuVisible && window.innerWidth <= 480
+        ? document.body.style.overflow = 'hidden'
+        : document.body.style.overflow = 'visible';
+    }, [menuVisible]);
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible);
