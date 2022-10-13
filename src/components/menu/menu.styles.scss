@@ -78,9 +78,22 @@
         box-sizing: border-box;
 
         ul {
-    
+
             li {
                 margin: 4rem 0;
+                animation: slideIn  .2s ease-in backwards;
+
+                &:nth-child(2) {
+                    animation-delay: .15s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: .3s;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: .45s;
+                }
             }
         }
         
@@ -116,5 +129,15 @@
                 fill: white;
             }
         }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100vw);
+    }
+
+    to {
+        transform: translateX(0);
     }
 }
