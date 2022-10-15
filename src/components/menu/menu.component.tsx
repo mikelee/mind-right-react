@@ -23,13 +23,9 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCategories, getUserData }) => {
 
-    const [categoriesVisible, setCategoriesVisible] = useState(false);
+    const [submenu, setSubmenu] = useState<string | null>(null);
     
     let navigate = useNavigate();
-
-    const toggleCategories = () => {
-        setCategoriesVisible(!categoriesVisible);
-    }
     
     const logout = () => {
         signOut(auth)
@@ -40,10 +36,25 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
         });
     }
 
-    const openCategories = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-        const name = (e.target as HTMLLIElement).getAttribute('data-name');
+    const openSubmenu = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+        const type = (e.target as HTMLLIElement).getAttribute('data-type');
 
-        if (name === 'categories-menu-button') setCategoriesVisible(true);
+        // only change submenu if the target is a menu link. Prevents this from firing if a child element is clicked
+        if (type === 'menu-link') {
+            const name = (e.target as HTMLLIElement).getAttribute('data-name');
+
+            setSubmenu(name);
+        }
+    }
+
+    const toggleSubmenu = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+        if (submenu === null) {
+            const name = (e.target as HTMLLIElement).getAttribute('data-name');
+
+            setSubmenu(name);
+        } else {
+            setSubmenu(null);
+        }
     }
 
     return (
@@ -58,19 +69,19 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 {
                     window.innerWidth > 480
                     ?
-                        <li className='menu-item menu-item--categories' onMouseEnter={toggleCategories} onMouseLeave={toggleCategories} >
+                        <li className='menu-item menu-item--categories' data-name='categories' onMouseEnter={e => toggleSubmenu(e)} onMouseLeave={e => toggleSubmenu(e)} >
                             Categories
                             {
-                                categoriesVisible
+                                submenu === 'categories'
                                 ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
                                 : null
                             }
                         </li>
                     :
-                        <li className='menu-item menu-item--categories' onClick={openCategories} data-name='categories-menu-button' >
+                        <li className='menu-item menu-item--categories' data-type='menu-link' data-name='categories' onClick={openSubmenu} >
                             Categories
                             {
-                                categoriesVisible
+                                submenu === 'categories'
                                 ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
                                 : null
                             }
@@ -79,8 +90,8 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 <li className='menu-item' onClick={logout}>Log Out</li>
             </ul>
             {
-                categoriesVisible
-                ? <button className='back-button' onClick={() => setCategoriesVisible(false)}>Back</button>
+                submenu !== null
+                ? <button className='back-button' onClick={() => setSubmenu(null)}>Back</button>
                 : null
             }
             <button className='close-button' onClick={toggleMenu}>
