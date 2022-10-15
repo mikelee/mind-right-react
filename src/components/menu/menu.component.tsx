@@ -40,6 +40,12 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
         });
     }
 
+    const openCategories = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+        const name = (e.target as HTMLLIElement).getAttribute('data-name');
+
+        if (name === 'categories-menu-button') setCategoriesVisible(true);
+    }
+
     return (
         <nav className='menu'>
             <ul>
@@ -49,14 +55,27 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 <li>
                     <Link to='/home/thoughts' className='menu-item' onClick={toggleMenu}>Thoughts</Link>
                 </li>
-                <li className='menu-item menu-item--categories' onMouseEnter={toggleCategories} onMouseLeave={toggleCategories} >
-                    Categories
-                    {
-                        categoriesVisible
-                        ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
-                        : null
-                    }
-                </li>
+                {
+                    window.innerWidth > 480
+                    ?
+                        <li className='menu-item menu-item--categories' onMouseEnter={toggleCategories} onMouseLeave={toggleCategories} >
+                            Categories
+                            {
+                                categoriesVisible
+                                ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
+                                : null
+                            }
+                        </li>
+                    :
+                        <li className='menu-item menu-item--categories' onClick={openCategories} data-name='categories-menu-button' >
+                            Categories
+                            {
+                                categoriesVisible
+                                ? <Submenu childComponent={<Categories categories={categories} thoughts={thoughts} user={user} getCategories={getCategories} getUserData={getUserData} />} />
+                                : null
+                            }
+                        </li>
+                }
                 <li className='menu-item' onClick={logout}>Log Out</li>
             </ul>
             <button className='close-button' onClick={toggleMenu}>
