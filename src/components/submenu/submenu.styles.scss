@@ -19,3 +19,13 @@ $sub-menu-right-margin: 2rem;
     border-radius: 0 .5rem .5rem .5rem;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 480px) {
+    .submenu {
+        position: fixed;
+        top: 8rem;
+        left: auto;
+        width: 100vw;
+        height: 100vh;
+    }
+}
