@@ -62,6 +62,12 @@
     }
 }
 
+@media screen and (max-width: 650px) {
+    .menu {
+        width: 20rem;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .menu {
         position: fixed;
