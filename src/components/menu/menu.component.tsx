@@ -78,6 +78,11 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 }
                 <li className='menu-item' onClick={logout}>Log Out</li>
             </ul>
+            {
+                categoriesVisible
+                ? <button className='back-button' onClick={() => setCategoriesVisible(false)}>Back</button>
+                : null
+            }
             <button className='close-button' onClick={toggleMenu}>
                     <CloseIcon className='close-button-icon' />
             </button>

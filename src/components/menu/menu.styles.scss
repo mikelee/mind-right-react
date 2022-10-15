@@ -57,6 +57,7 @@
         }
     }
 
+    .back-button,
     .close-button {
         display: none;
     }
@@ -118,6 +119,13 @@
             &:visited {
                 color: white;
             }
+        }
+
+        .back-button {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .close-button {
