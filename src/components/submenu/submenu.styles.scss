@@ -1,8 +1,10 @@
 @import '../../variables';
 
 $menu-start: 2rem;
-$menu-width: 30rem;
-$menu-end: $menu-start + $menu-width;
+$menu-width-large: 30rem;
+$menu-width-small: 20rem;
+$menu-end-large: $menu-start + $menu-width-large;
+$menu-end-small: $menu-start + $menu-width-small;
 $sub-menu-right-margin: 2rem;
 
 .submenu {
@@ -12,12 +14,23 @@ $sub-menu-right-margin: 2rem;
     min-height: 100%;
     box-sizing: border-box;
     min-width: 100%;
-    width: calc(100vw - $menu-end - $menu-end);
+    width: calc(100vw - $menu-end-large - $menu-end-large);
     background-color: white;
     color: black;
     border: 2px solid $color-mint-dark;
     border-radius: 0 .5rem .5rem .5rem;
-    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1200px) {
+    .submenu {
+        width: calc(100vw - $menu-end-large - $menu-start);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .submenu {
+        width: calc(100vw - $menu-end-small - $menu-start);
+    }
 }
 
 @media screen and (max-width: 480px) {
