@@ -125,3 +125,38 @@
         background-color: white;
     }
 }
+
+@media screen and (max-width: 900px) {
+    .categories {
+
+        .categories-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #categories-form {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .categories {
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #categories-form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .categories {
+        font-size: 1.8rem;
+        min-height: 100vh;
+    }
+}
