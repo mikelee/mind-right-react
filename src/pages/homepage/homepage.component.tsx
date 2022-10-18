@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useWindowSize from '../../hooks/useWindowSize';
 
 import './homepage.styles.scss';
 
@@ -13,6 +14,8 @@ const Homepage: React.FC<Props> = ({ loggedOut }) => {
 
     const [loginType, setloginType] = useState<string | null>(null);
 
+    const windowSize = useWindowSize();
+
     const toggleLogin = (e: React.MouseEvent<HTMLButtonElement> | null) => {
         if (e) {
             const type = (e.target as HTMLButtonElement).getAttribute('name');
@@ -24,7 +27,7 @@ const Homepage: React.FC<Props> = ({ loggedOut }) => {
     }
 
     return (
-        <div className='homepage'>
+        <div className='homepage' style={{ height: windowSize.height + 'px'}}>
             <main>
                 <h1 className='name'>MindRight</h1>
                 <div className='buttons'>
