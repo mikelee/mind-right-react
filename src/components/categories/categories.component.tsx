@@ -156,11 +156,11 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                                 displayAddInput
                                 ?
                                     <div className='add-category-section'>
+                                        <button className='cancel-add-button' onClick={() => setDisplayAddInput(false)}>Cancel</button>
                                         <form>
                                             <input type='text' placeholder='Category name' onChange={(e) => setNewCategoryName(e.target.value)} autoFocus />
                                             <Button text='Submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => addCategory(e)} />
                                         </form>
-                                        <button className='cancel-add-button' onClick={() => setDisplayAddInput(false)}>Cancel</button>
                                     </div>
                                 :
                                     <Button text='Add' onClick={() => setDisplayAddInput(true)} />

@@ -86,32 +86,36 @@
 
         .add-category-section {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             width: 100%;
             margin: 0 2rem;
 
+            .cancel-add-button {
+                align-self: flex-start;
+                background: none;
+                color: $color-mint-dark;
+                margin-bottom: 2rem;
+                border: none;
+    
+                 &:hover {
+                     cursor: pointer;
+                 }
+            }
+
             form {
                 display: flex;
-                justify-content: space-between;
+                align-self: center;
+                justify-content: center;
                 width: 70%;
 
                 input {
                     font-size: 1.8rem;
+                    margin-right: 4rem;
                     border: none;
                     border-bottom: 1px solid $color-mint-dark;
                 }
             }
-        }
-
-        .cancel-add-button {
-            align-self: flex-start;
-            background: none;
-            border: none;
-            color: $color-mint-dark;
-
-             &:hover {
-                 cursor: pointer;
-             }
         }
     }
 
@@ -138,6 +142,20 @@
 
         #categories-form {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        .add-category-section {
+
+            form {
+                flex-direction: column;
+                align-items: center;
+
+                input {
+                    width: 100%;
+                    margin-bottom: 2rem;
+                    margin-right: 0;
+                }
+            }
         }
     }
 }
