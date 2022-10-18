@@ -174,10 +174,10 @@ const Categories: React.FC<Props> = ({ categories, thoughts, user, getCategories
                 confirmDeleteVisible && categoryForDeletion
                 ?
                     <div className='confirm-delete'>
-                        <p>{`Are you sure you want to delete ${categoryForDeletion.name}?`}</p>
+                        <p className='confirm-delete-text'>Are you sure you want to delete <span className='confirm-delete-category-name'>{categoryForDeletion.name}</span>?</p>
                         <div className='confirm-delete-buttons'>
-                            <button onClick={() => setConfirmDeleteVisible(false)}>Cancel</button>
-                            <button onClick={() => deleteCategory()}>Delete</button>
+                            <Button text='Delete' onClick={() => deleteCategory()} />
+                            <Button text='Cancel' onClick={() => setConfirmDeleteVisible(false)} />
                         </div>
                     </div>
                 : null

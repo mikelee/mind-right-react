@@ -130,6 +130,26 @@
         justify-content: center;
         align-items: center;
         background-color: white;
+        padding: 2rem;
+        box-sizing: border-box;
+
+        &-text {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        &-category-name {
+            color: $color-mint-dark;
+        }
+
+        &-buttons {
+            display: flex;
+            
+            & > button {
+                margin: 1rem;
+            }
+        }
     }
 }
 
@@ -156,6 +176,10 @@
                     margin-right: 0;
                 }
             }
+        }
+
+        .confirm-delete-buttons {
+            flex-direction: column;
         }
     }
 }
