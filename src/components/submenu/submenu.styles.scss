@@ -1,11 +1,17 @@
 @import '../../variables';
 
+// Horizontal
 $menu-start: 2rem;
 $menu-width-large: 30rem;
 $menu-width-small: 20rem;
 $menu-end-large: $menu-start + $menu-width-large;
 $menu-end-small: $menu-start + $menu-width-small;
 $sub-menu-right-margin: 2rem;
+
+// Vertical
+$menubar-height: 10rem;
+$menu-item-height: 4rem;
+$categories-top: calc($menubar-height + $menu-item-height  + $menu-item-height);
 
 .submenu {
     position: absolute;
@@ -19,6 +25,7 @@ $sub-menu-right-margin: 2rem;
     color: black;
     border: 2px solid $color-mint-dark;
     border-radius: 0 .5rem .5rem .5rem;
+    max-height: 50vh;
 }
 
 @media screen and (max-width: 1200px) {

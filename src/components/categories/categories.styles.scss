@@ -3,6 +3,7 @@
 .categories {
     display: flex;
     flex-direction: column;
+    height: 50vh;
 
     &-tabs {
         display: flex;
@@ -38,6 +39,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         padding: 2rem;
+        overflow: scroll;
 
         .category-item {
             display: flex;
@@ -56,6 +58,7 @@
         gap: 2rem;
         grid-template-columns: repeat(3, 1fr);
         padding: 2rem;
+        overflow: scroll;
         
         .categories-form-input {
             display: flex;
@@ -156,7 +159,7 @@
 
 @media screen and (max-width: 480px) {
     .categories {
+        height: calc(100vh - 8rem);
         font-size: 1.8rem;
-        min-height: 100vh;
     }
 }
