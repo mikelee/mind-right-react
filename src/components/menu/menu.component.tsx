@@ -60,6 +60,17 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
 
     return (
         <nav className='menu'>
+            {
+                submenu !== null
+                ?
+                    <button className='back-button' onClick={() => setSubmenu(null)}>
+                        <BackIcon className='back-button-icon' />
+                    </button>
+                : null
+            }
+            <button className='close-button' onClick={toggleMenu}>
+                    <CloseIcon className='close-button-icon' />
+            </button>
             <ul>
                 <li>
                     <Link to='/home' className='menu-item' onClick={toggleMenu}>Home</Link>
@@ -90,17 +101,6 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
                 }
                 <li className='menu-item' onClick={logout}>Log Out</li>
             </ul>
-            {
-                submenu !== null
-                ?
-                    <button className='back-button' onClick={() => setSubmenu(null)}>
-                        <BackIcon className='back-button-icon' />
-                    </button>
-                : null
-            }
-            <button className='close-button' onClick={toggleMenu}>
-                    <CloseIcon className='close-button-icon' />
-            </button>
         </nav>
     );
 };

@@ -84,6 +84,40 @@
         border: none;
         box-sizing: border-box;
 
+        .back-button {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: none;
+            border: none;
+
+            &-icon {
+                width: fit-content;
+                height: 3rem;
+                padding: 2rem;
+            }
+        }
+
+        .close-button {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+
+            &-icon {
+                width: fit-content;
+                height: 3rem;
+                padding: 2rem;
+            }
+
+            .delete-path {
+                fill: white;
+            }
+        }
+
         ul {
 
             li {
@@ -119,40 +153,6 @@
 
             &:visited {
                 color: white;
-            }
-        }
-
-        .back-button {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: none;
-            border: none;
-
-            &-icon {
-                width: fit-content;
-                height: 3rem;
-                padding: 2rem;
-            }
-        }
-
-        .close-button {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: none;
-            border: none;
-
-            &-icon {
-                width: fit-content;
-                height: 3rem;
-                padding: 2rem;
-            }
-
-            .delete-path {
-                fill: white;
             }
         }
     }
