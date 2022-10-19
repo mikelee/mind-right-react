@@ -43,7 +43,7 @@ $categories-top: calc($menubar-height + $menu-item-height  + $menu-item-height);
 @media screen and (max-width: 480px) {
     .submenu {
         position: fixed;
-        top: 8rem;
+        top: 7rem;
         left: auto;
         width: 100vw;
         height: 100vh;
