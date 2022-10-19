@@ -5,6 +5,7 @@ import { auth } from '../../firebase';
 
 import './menu.styles.scss';
 import {ReactComponent as CloseIcon} from '../../assets/delete.svg';
+import {ReactComponent as BackIcon} from '../../assets/back_icon.svg';
 
 import { Category, Thought } from '../data-loader/data-loader.component';
 import { User } from '../../App';
@@ -91,7 +92,10 @@ const Menu: React.FC<Props> = ({ categories, thoughts, user, toggleMenu, getCate
             </ul>
             {
                 submenu !== null
-                ? <button className='back-button' onClick={() => setSubmenu(null)}>Back</button>
+                ?
+                    <button className='back-button' onClick={() => setSubmenu(null)}>
+                        <BackIcon className='back-button-icon' />
+                    </button>
                 : null
             }
             <button className='close-button' onClick={toggleMenu}>
