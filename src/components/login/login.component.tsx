@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { addNewUser, auth } from '../../firebase';
+import useWindowSize from '../../hooks/useWindowSize';
 
 import './login.styles.scss';
 import {ReactComponent as CloseIcon} from '../../assets/delete.svg';
@@ -16,6 +17,7 @@ interface Props {
 const Login: React.FC<Props> = ({ type, toggleLogin }) => {
 
     let navigate = useNavigate();
+    const windowSize = useWindowSize();
     
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -101,7 +103,7 @@ const Login: React.FC<Props> = ({ type, toggleLogin }) => {
     }
     
     return (
-        <section className='login' data-testid='login-component'>
+        <section className='login' data-testid='login-component' style={ windowSize.width <= 480 ? { height:  windowSize.height + 'px'} : {}}>
             {
                 type === 'sign-up'
                 ? <h2 className='title' data-testid='sign-up-title'>Sign Up</h2>
