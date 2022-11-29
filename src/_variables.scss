@@ -3,3 +3,14 @@ $color-mint: #9DFFCF;
 $color-mint-dark: #89EBBB;
 $color-black: #343434;
 $color-gray: #DADADA;
+
+// Mixins
+@mixin icon {
+    height: 3rem;
+}
+
+@mixin icon-button {
+    background: none;
+    border: none;
+    padding: 2rem;
+}
