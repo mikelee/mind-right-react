@@ -85,30 +85,26 @@
         box-sizing: border-box;
 
         .back-button {
+            @include icon-button;
             display: inline-block;
             position: absolute;
             top: 0;
             left: 0;
-            background: none;
-            border: none;
-            padding: 2rem;
 
             &-icon {
-                height: 3rem;
+                @include icon;
             }
         }
 
         .close-button {
+            @include icon-button;
             display: inline-block;
             position: absolute;
             top: 0;
             right: 0;
-            background: none;
-            border: none;
-            padding: 2rem;
 
             &-icon {
-                height: 3rem;
+                @include icon;
             }
 
             .delete-path {
