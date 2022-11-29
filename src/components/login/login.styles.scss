@@ -60,16 +60,13 @@
     }
 
     .close {
+        @include icon-button;
         position: absolute;
         top: 0;
         right: 0;
-        background: none;
-        border: none;
 
         &-icon {
-            width: 3rem;
-            height: 3rem;
-            padding: 2rem;
+            @include icon;
         }
     }
 }
