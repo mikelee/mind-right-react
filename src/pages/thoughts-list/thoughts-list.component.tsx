@@ -109,7 +109,7 @@ const ThoughtsList: React.FC<Props> = ({ categories, thoughts, user, getUserData
         <div className='thoughts-list'>
             <div className='buttons'>
                 <Button text={'Add'} onClick={addThought} />
-                <Button text={'Filter'} onClick={() => setThoughtsFilterVisible(!thoughtsFilterVisible)} />
+                <Button text={thoughtsFilterVisible ? 'Close' : 'Filter'} onClick={() => setThoughtsFilterVisible(!thoughtsFilterVisible)} />
             </div>
             {
                 thoughtsFilterVisible
