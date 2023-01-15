@@ -77,3 +77,14 @@
         }
     }
 }
+
+@media screen and (max-width: 480px) {
+    .login {
+        height: 100%;
+        justify-content: flex-start;
+
+        .title {
+            margin-top: 25%;
+        }
+    }
+}
