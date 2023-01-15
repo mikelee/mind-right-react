@@ -48,6 +48,7 @@
             padding-bottom: .6rem;
             
             .text{
+                font-weight: 400;
                 margin: 0;
             }
         }
@@ -195,6 +196,11 @@
         #categories-form {
             display: flex;
             flex-direction: column;
+            
+            .categories-form-input {
+                // 100% - checkbox width - .categories-form padding
+                width: calc(100% - 2.5rem - 2rem);
+            }
         }
     }
 }
