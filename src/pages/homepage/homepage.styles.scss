@@ -154,6 +154,10 @@
             .buttons {
                 flex-direction: column;
             }
+
+            .overlay {
+                display: none;
+            }
         }
     }
 }
