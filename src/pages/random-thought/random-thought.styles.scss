@@ -8,7 +8,29 @@
     background-size: cover;
     background-position: center;
 
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        transition: opacity .5s;
+
+        &-1 {
+            background-image: url('../../assets/beach-image.jpeg');
+            opacity: 1;
+        }
+    
+        &-2 {
+            opacity: 0;
+        }
+    }
+
     .text {
+        z-index: 9999;
         width: 80%;
         height: 70%;
         margin: auto;
@@ -22,5 +44,6 @@
     .shuffle-button {
         position: absolute;
         bottom: 5%;
+        z-index: 9999;
     }
 }
