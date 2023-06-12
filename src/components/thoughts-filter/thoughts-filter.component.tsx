@@ -36,7 +36,7 @@ const ThoughtsFilter: React.FC<Props> = ({ categories, containsAll, setContainsA
                 <Checkbox checked={containsAll} onClick={() => setContainsAll(!containsAll)} />
                 <p>Contains all</p>
             </div>
-            <div className='categories'>
+            <div className='category-filters'>
                 {
                     categories?.length !== 0
                     ?

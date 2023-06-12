@@ -16,7 +16,7 @@
         align-self: flex-end;
     }
 
-    .categories {
+    .category-filters {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
@@ -40,7 +40,7 @@
 @media screen and (max-width: 700px) {
     .thoughts-filter {
 
-        .categories {
+        .category-filters {
             grid-template-columns: repeat(3, 1fr);
         }
     }
@@ -50,7 +50,7 @@
     .thoughts-filter {
         padding: 1rem;
 
-        .categories {
+        .category-filters {
             grid-template-columns: repeat(2, 1fr);
         }
     }
