@@ -49,6 +49,6 @@
     "cypress-firebase": "^2.2.1",
     "cypress-real-events": "^1.7.0",
     "firebase-admin": "^9.12.0",
-    "sass": "^1.43.3"
+    "sass": "^1.72.0"
   }
 }
