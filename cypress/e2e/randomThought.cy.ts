@@ -16,7 +16,7 @@ it('should click shuffle button and change the text with the new thoughts text',
     cy.get('[data-testid="random-thought-text"]').then(randomThoughtText => {
         const text = randomThoughtText.text();
 
-        cy.get('button').click();
+        cy.get('button').contains(/shuffle/i).click();
 
         cy.get('[data-testid="random-thought-text"]').should('not.have.text', text);
     });

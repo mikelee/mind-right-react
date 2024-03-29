@@ -35,7 +35,7 @@ it('should edit first category name', () => {
         cy.realType(' changed');
     
         // click 'Save'
-        cy.get('button').realClick();
+        cy.get('.categories-buttons > .button').realClick();
             
         cy.contains(/select/i).realClick();
 
