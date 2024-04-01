@@ -5,7 +5,7 @@ import Login from './login.component';
 it('should display sign up button', () => {
     render(
         <MemoryRouter>
-            <Login type='sign-up'/>
+            <Login type='sign-up'toggleLogin={jest.fn()}/>
         </MemoryRouter>
     );
 
@@ -19,7 +19,7 @@ it('should display sign up button', () => {
 it('should display sign in button', () => {
     render(
         <MemoryRouter>
-            <Login type='sign-in'/>
+            <Login type='sign-in' toggleLogin={jest.fn()}/>
         </MemoryRouter>
     );
 
